@@ -1,0 +1,63 @@
+name: TfTAddon
+author: TfT_02
+main: com.me.tft_02.tftaddon.TfTAddon
+description: mcMMO Addon which adds extra features.
+version: 1.6.9
+softdepend: [mcMMO]
+commands:
+   tftaddon:
+      description: Get information about the plugin.
+      permission: tftaddon.tftaddon
+      permission-message: You don't have <permission>
+   tfthelp:
+      description: Get a list of all the commands.
+      permission: tftaddon.tfthelp
+      permission-message: You don't have <permission>
+   tftaxes:
+      description: Get information about axes addon.
+      permission: tftaddon.axes
+      permission-message: You don't have <permission>
+   tftherbalism:
+      description: Get information about herbalism addon.
+      permission: tftaddon.herbalism
+      permission-message: You don't have <permission>
+   tftrepair:
+      description: Get information about the repair addon.
+      permission: tftaddon.repair
+      permission-message: You don't have <permission>
+   dura:
+      description: Check durability of item in hand.
+      permission: tftaddon.dura
+      permission-message: You don't have <permission>
+permissions:
+    tftaddon.*:
+        description: Gives access to all commands
+        children:
+            tftaddon.tftaddon: true
+            tftaddon.tfthelp: true
+            tftaddon.axes: true
+            tftaddon.herbalism: true
+            tftaddon.repair: true
+            tftaddon.dura: true
+    tftaddon.defaults:
+        description: Gives access to default commands
+        default: true
+        children:
+            tftaddon.tftaddon: true
+            tftaddon.tfthelp: true
+            tftaddon.axes: true
+            tftaddon.herbalism: true
+            tftaddon.repair: true
+    tftaddon.tftaddon:
+        description: Get info about the plugin.
+    tftaddon.tfthelp:
+        description: Get a list of all the commands.
+    tftaddon.axes:
+        description: Get information about the axes.
+    tftaddon.herbalism:
+        description: Get information about the herbalism addon.
+    tftaddon.repair:
+        description: Grants access to the repair additions and the tftrepair command.
+    tftaddon.dura:
+        description: Check the durability of item in hand.
+        default: false

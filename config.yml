@@ -1,0 +1,15 @@
+# 
+#  TfTAddon configuration
+General:
+  debug_mode_enabled: false
+  stats_tracking_enabled: true
+Skills:
+  Axes:
+    Dura_level_cap: 100
+    Dura_percentage_max: 50
+  Herbalism:
+    SunnyDay_cost: 30
+    SunnyDay_unlock_level: 50
+  Repair:
+    BlacksmithsInstinct_unlock_level: 800
+    BlacksmithsInstinct_percentage_durability_left: 10
