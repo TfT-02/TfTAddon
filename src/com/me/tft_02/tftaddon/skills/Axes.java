@@ -35,10 +35,10 @@ public class Axes {
         }
 
         int level_current = users.getSkillLevel(player, "AXES");
-//        int level_cap = plugin.getConfig().getInt("Skills.Axes.Dura_level_cap");
-//        float chance_max = plugin.getConfig().getInt("Skills.Axes.Dura_percentage_max");
-        int level_cap = 100;
-        float chance_max = 50;
+        int level_cap = plugin.getConfig().getInt("Skills.Axes.Dura_level_cap");
+        float chance_max = plugin.getConfig().getInt("Skills.Axes.Dura_percentage_max");
+//        int level_cap = 100;
+//        float chance_max = 50;
 
         float diceroll = random.nextInt(100);
         if (level_current <= 0) {

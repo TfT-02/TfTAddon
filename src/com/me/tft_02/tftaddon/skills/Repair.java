@@ -26,9 +26,10 @@ public class Repair {
             return;
         }
 
-//        int blacksmithsinstinctUnlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
+        int blacksmithsinstinctUnlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
         float level_current = users.getSkillLevel(player, "REPAIR");
-        float level_unlock = 800;
+//      float level_unlock = 800;
+        float level_unlock = blacksmithsinstinctUnlock;
 
         if (level_current > 0) {
             if (level_current >= level_unlock) {
@@ -41,8 +42,8 @@ public class Repair {
     public void checkDurability(Player player, ItemStack is) {
         float currentdura = is.getDurability();
         float maxdurability = is.getType().getMaxDurability();
-        float configpercentageleft = 10;
-//        float configpercentageleft = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left");
+//        float configpercentageleft = 10;
+        float configpercentageleft = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left");
         float warningvalue = Math.round((configpercentageleft / 100) * maxdurability);
 
         if (!hasBeenWarned(player)) {

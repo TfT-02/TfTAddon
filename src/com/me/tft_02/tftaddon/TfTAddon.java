@@ -110,5 +110,7 @@ public class TfTAddon extends JavaPlugin {
         this.getLogger().log(Level.INFO, " ");
         this.getLogger().log(Level.INFO, "Skills.Repair.BlacksmithsInstinct_unlock_level " + getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level"));
         this.getLogger().log(Level.INFO, "Skills.Repair.BlacksmithsInstinct_percentage_durability_left " + getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left"));
+        this.getLogger().log(Level.INFO, " ");
+        this.getLogger().log(Level.INFO, "Announce_Level_Up.Power_Level " + getConfig().getInt("Announce_Level_Up.Power_Level"));
     }
 }

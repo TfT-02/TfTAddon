@@ -29,10 +29,10 @@ public class Herbalism {
     public void checkSunnyDay(Player player, ItemStack inHand) {
         ItemStack item = player.getItemInHand();
         Material summonItem = null;
-        int summonAmount = 30;
+//        int summonAmount = 30;
 
         summonItem = Material.SEEDS;
-//        summonAmount = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
+        int summonAmount = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
         int skillLvl = (users.getSkillLevel(player, "HERBALISM"));
 
         if (skillLvl >= 50 && item.getType().equals(summonItem)) {
