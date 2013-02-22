@@ -12,13 +12,13 @@ import com.me.tft_02.tftaddon.skills.Repair;
 import com.me.tft_02.tftaddon.util.ItemChecks;
 
 public class BlockListener implements Listener {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public BlockListener(final TfTAddon instance) {
         plugin = instance;
     }
 
-    final Repair repair = new Repair(plugin);
+    private final Repair repair = new Repair(plugin);
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {

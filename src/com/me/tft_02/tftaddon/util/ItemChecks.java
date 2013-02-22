@@ -197,7 +197,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is leather armor, false otherwise
      */
-    public static boolean isLeatherArmor(ItemStack is) {
+    private static boolean isLeatherArmor(ItemStack is) {
         switch (is.getType()) {
         case LEATHER_BOOTS:
         case LEATHER_CHESTPLATE:
@@ -216,7 +216,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is gold armor, false otherwise
      */
-    public static boolean isGoldArmor(ItemStack is) {
+    private static boolean isGoldArmor(ItemStack is) {
         switch (is.getType()) {
         case GOLD_BOOTS:
         case GOLD_CHESTPLATE:
@@ -235,7 +235,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is iron armor, false otherwise
      */
-    public static boolean isIronArmor(ItemStack is) {
+    private static boolean isIronArmor(ItemStack is) {
         switch (is.getType()) {
         case IRON_BOOTS:
         case IRON_CHESTPLATE:
@@ -254,7 +254,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is diamond armor, false otherwise
      */
-    public static boolean isDiamondArmor(ItemStack is) {
+    private static boolean isDiamondArmor(ItemStack is) {
         switch (is.getType()) {
         case DIAMOND_BOOTS:
         case DIAMOND_CHESTPLATE:
@@ -283,7 +283,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is a stone tool, false otherwise
      */
-    public static boolean isStoneTool(ItemStack is) {
+    private static boolean isStoneTool(ItemStack is) {
         switch (is.getType()) {
         case STONE_AXE:
         case STONE_HOE:
@@ -303,7 +303,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is a wooden tool, false otherwise
      */
-    public static boolean isWoodTool(ItemStack is) {
+    private static boolean isWoodTool(ItemStack is) {
         switch (is.getType()) {
         case WOOD_AXE:
         case WOOD_HOE:
@@ -323,7 +323,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is a string tool, false otherwise
      */
-    public static boolean isStringTool(ItemStack is) {
+    private static boolean isStringTool(ItemStack is) {
         switch (is.getType()) {
         case BOW:
         case FISHING_ROD:
@@ -341,7 +341,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is a stone tool, false otherwise
      */
-    public static boolean isGoldTool(ItemStack is) {
+    private static boolean isGoldTool(ItemStack is) {
         switch (is.getType()) {
         case GOLD_AXE:
         case GOLD_HOE:
@@ -361,7 +361,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is an iron tool, false otherwise
      */
-    public static boolean isIronTool(ItemStack is) {
+    private static boolean isIronTool(ItemStack is) {
         switch (is.getType()) {
         case IRON_AXE:
         case IRON_HOE:
@@ -382,7 +382,7 @@ public class ItemChecks {
      * @param is Item to check
      * @return true if the item is a diamond tool, false otherwise
      */
-    public static boolean isDiamondTool(ItemStack is) {
+    private static boolean isDiamondTool(ItemStack is) {
         switch (is.getType()) {
         case DIAMOND_AXE:
         case DIAMOND_HOE:

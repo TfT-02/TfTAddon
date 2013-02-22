@@ -17,14 +17,14 @@ import com.me.tft_02.tftaddon.skills.Repair;
 import com.me.tft_02.tftaddon.util.ItemChecks;
 
 public class PlayerListener implements Listener {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public PlayerListener(final TfTAddon instance) {
         plugin = instance;
     }
 
-    final Repair repair = new Repair(plugin);
-    final Herbalism herbalism = new Herbalism(plugin);
+    private final Repair repair = new Repair(plugin);
+    private final Herbalism herbalism = new Herbalism(plugin);
 
     /**
      * Monitor PlayerInteract events.
@@ -53,7 +53,7 @@ public class PlayerListener implements Listener {
 
             /* WEATHER CHECKS */
             if (player.isSneaking() && player.hasPermission("tftaddon.herbalism") && inHand.getType().equals(Material.SEEDS)) {
-                herbalism.checkSunnyDay(player, inHand);
+                herbalism.checkSunnyDay(player);
             }
             break;
         case RIGHT_CLICK_BLOCK:

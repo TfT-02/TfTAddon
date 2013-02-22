@@ -10,13 +10,13 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Axes {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public Axes(final TfTAddon instance) {
         plugin = instance;
     }
     
-    final UserProfiles users = new UserProfiles(plugin);
+    private final UserProfiles users = new UserProfiles(plugin);
 
     private Random random = new Random();
 
@@ -45,7 +45,7 @@ public class Axes {
             return;
         }
 
-        float chance = (level_current < level_cap) ? (float) (chance_max / level_cap) * level_current : chance_max;
+        float chance = (level_current < level_cap) ? chance_max / level_cap * level_current : chance_max;
 
         if (chance > diceroll) {
             is.setDurability((short) Math.max(is.getDurability() - 1, 0));
@@ -58,6 +58,5 @@ public class Axes {
                 player.sendMessage(ChatColor.RED + "Failed " + ChatColor.YELLOW + chance + " < " + diceroll);
             }
         }
-        return;
     }
 }

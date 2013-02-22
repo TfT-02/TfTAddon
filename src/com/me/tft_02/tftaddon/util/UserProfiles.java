@@ -7,10 +7,9 @@ import com.gmail.nossr50.api.ExperienceAPI;
 import com.me.tft_02.tftaddon.TfTAddon;
 
 public class UserProfiles {
-    TfTAddon plugin;
 
     public UserProfiles(final TfTAddon instance) {
-        plugin = instance;
+        TfTAddon plugin = instance;
     }
 
     /**

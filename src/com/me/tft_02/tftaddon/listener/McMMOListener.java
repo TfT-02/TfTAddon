@@ -14,7 +14,7 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class McMMOListener implements Listener {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public McMMOListener(final TfTAddon instance) {
         plugin = instance;

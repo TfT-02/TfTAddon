@@ -18,14 +18,14 @@ import com.me.tft_02.tftaddon.util.ItemChecks;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class EntityListener implements Listener {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public EntityListener(final TfTAddon instance) {
         plugin = instance;
     }
 
-    final Axes axes = new Axes(plugin);
-    final Repair repair = new Repair(plugin);
+    private final Axes axes = new Axes(plugin);
+    private final Repair repair = new Repair(plugin);
     final UserProfiles users = new UserProfiles(plugin);
 
     /**
@@ -48,9 +48,8 @@ public class EntityListener implements Listener {
      * Apply combat modifiers
      * 
      * @param event The event to run the combat checks on.
-     * @param plugin TfTAddon plugin instance
      */
-    public void combatChecksTfT(EntityDamageByEntityEvent event) {
+    void combatChecksTfT(EntityDamageByEntityEvent event) {
         Entity damager = event.getDamager();
         EntityType damagerType = damager.getType();
 

@@ -11,13 +11,13 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Repair {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public Repair(final TfTAddon instance) {
         plugin = instance;
     }
 
-    final UserProfiles users = new UserProfiles(plugin);
+    private final UserProfiles users = new UserProfiles(plugin);
 
     public static List<String> warnedPlayers = new ArrayList<String>();
 
@@ -26,15 +26,13 @@ public class Repair {
             return;
         }
 
-        int blacksmithsinstinctUnlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
+        int level_unlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
         float level_current = users.getSkillLevel(player, "REPAIR");
 //      float level_unlock = 800;
-        float level_unlock = blacksmithsinstinctUnlock;
 
         if (level_current > 0) {
             if (level_current >= level_unlock) {
                 checkDurability(player, is);
-                return;
             }
         }
     }
@@ -59,9 +57,6 @@ public class Repair {
     }
 
     public boolean hasBeenWarned(Player player) {
-        if (warnedPlayers.contains(player.getName())) {
-            return true;
-        }
-        return false;
+        return warnedPlayers.contains(player.getName());
     }
 }

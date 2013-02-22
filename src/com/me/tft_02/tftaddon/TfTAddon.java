@@ -56,7 +56,7 @@ public class TfTAddon extends JavaPlugin {
     }
 
     private void setupConfiguration() {
-        FileConfiguration config = this.getConfig();
+        final FileConfiguration config = this.getConfig();
         config.addDefault("General.debug_mode_enabled", false);
         config.addDefault("General.stats_tracking_enabled", true);
 

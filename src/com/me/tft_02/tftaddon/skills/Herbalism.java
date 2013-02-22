@@ -16,19 +16,19 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Herbalism {
-    TfTAddon plugin;
+    private TfTAddon plugin;
 
     public Herbalism(final TfTAddon instance) {
         plugin = instance;
     }
 
-    final UserProfiles users = new UserProfiles(plugin);
+    private final UserProfiles users = new UserProfiles(plugin);
 
     private boolean sunnydayReady = true;
 
-    public void checkSunnyDay(Player player, ItemStack inHand) {
+    public void checkSunnyDay(Player player) {
         ItemStack item = player.getItemInHand();
-        Material summonItem = null;
+        Material summonItem;
 //        int summonAmount = 30;
 
         summonItem = Material.SEEDS;
@@ -74,15 +74,12 @@ public class Herbalism {
         }
     }
 
-    private String[] defaultWeatherMessages;
-    private static List<String> WeatherMessages;
-
     @SuppressWarnings("unused")
-    public String getWeatherMessages() {
-        defaultWeatherMessages = new String[] { "The sunlight is strong!", "The sunlight turned harsh!", "The sunlight got bright!" };
-        WeatherMessages = Arrays.asList(defaultWeatherMessages);
+    String getWeatherMessages() {
+        String[] defaultWeatherMessages = new String[]{"The sunlight is strong!", "The sunlight turned harsh!", "The sunlight got bright!"};
+        List<String> weatherMessages = Arrays.asList(defaultWeatherMessages);
         Random random = new Random();
-        List<String> messages = WeatherMessages;
+        List<String> messages = weatherMessages;
         String message;
         int messageSize = 3;
         return message = (messages.get(random.nextInt(messageSize)));

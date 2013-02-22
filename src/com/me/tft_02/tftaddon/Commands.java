@@ -11,20 +11,19 @@ import org.bukkit.inventory.ItemStack;
 
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
-public class Commands implements CommandExecutor {
-    TfTAddon plugin;
+class Commands implements CommandExecutor {
+    private TfTAddon plugin;
 
     public Commands(final TfTAddon instance) {
         plugin = instance;
     }
 
-    UserProfiles users = new UserProfiles(plugin);
+    private UserProfiles users = new UserProfiles(plugin);
 
-    float level_current;
-    String duraChance;
+    private String duraChance;
 
-    float dura_level_cap;
-    float dura_percentage_max;
+    private float dura_level_cap;
+    private float dura_percentage_max;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -85,7 +84,7 @@ public class Commands implements CommandExecutor {
                 sender.sendMessage("This command does not support console usage.");
             } else {
                 if (player.hasPermission("tftaddon.axes")) {
-                    level_current = users.getSkillLevel(player, "AXES");
+                    float level_current = users.getSkillLevel(player, "AXES");
                     dataCalculations(level_current);
                     String plName = player.getName();
                     plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tftaxes");
