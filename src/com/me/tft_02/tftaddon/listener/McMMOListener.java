@@ -28,13 +28,25 @@ public class McMMOListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onLevelupEvent(McMMOPlayerLevelUpEvent event) {
         int levelRequired = plugin.getConfig().getInt("Announce_Level_Up.Power_Level");
-        if (levelRequired == 0) levelRequired = 100;
+        double messageDistance = TfTAddon.getInstance().getConfig().getDouble("Announce_Level_Up.Range");
+
+        if (levelRequired <= 0) {
+            return;
+        }
 
         Player player = event.getPlayer();
         int power_level = users.getSkillLevel(player, null);
 
         if (power_level / levelRequired > 1) {
-            Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
+            if (messageDistance > 0) {
+                for (Player players : player.getWorld().getPlayers()) {
+                    if (players != player && players.getLocation().distance(player.getLocation()) < messageDistance) {
+                        players.sendMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
+                    }
+                }
+            } else {
+                Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
+            }
         }
     }
 

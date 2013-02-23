@@ -6,6 +6,10 @@ Key:
   ! Change
   - Removal
 
+Version 1.6.10 | Tested on CB 1.4.7-R1.0 and mcMMO 1.4.00
+ ! Now announces level ups only to nearby players by default, announce globally with Range: -1
+ ! Disable notifications by setting 'Announce_Level_Up.Power_Level: 1000' to -1
+ 
 Version 1.6.9 | Tested on CB 1.4.7-R1.0 and mcMMO 1.4.00
  = Updated to use the latest mcMMO API
  + Added new Repair Ability: Blacksmiths instinct
