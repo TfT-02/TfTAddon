@@ -1,0 +1,49 @@
+Changelog:
+
+Key:
+  + Addition
+  = Fix
+  ! Change
+  - Removal
+
+Version 1.6.9 | Tested on CB 1.4.7-R1.0 and mcMMO 1.4.00
+ = Updated to use the latest mcMMO API
+ + Added new Repair Ability: Blacksmiths instinct
+ + Added notifications when a player reaches a certain level milestone
+ - Removed Fishermans diet
+
+Version 1.5.6 | Tested on CB 1.3.1-R2.0 and mcMMO 1.3.11
+ + Added Global cooldown system for "SunnyDay".
+ ! SunnyDay messages are randomized.
+ ! Config improvement: New Axes' "durability reducer" formula.
+ ! Config improvement: Added some simple config toggles for "Fisherman's diet", "SunnyDay" and Axes "durability reducer".
+
+Version 1.5.0 | Tested on CB 1.2.5-R4.0 and mcMMO 1.3.09
+ = Fixed for mcMMO 1.3.09 (it broke due to an API change)
+
+Version 1.4.1 | Tested on CB 1.2.5-R4.0 and mcMMO 1.3.08
+ = Fixed levels being off. (Fisherman's diet)
+
+Version 1.4.0 | Tested on CB 1.2.5-R4.0
+ + Added a new passive ability for Fishing (Fisherman's diet)
+ + Added Metrics to keep track of stats
+ + Added global message when a player uses Sunny Day
+ ! Changed the effects / sounds for Sunny Day
+
+Version 1.3.0 | Tested on CB 1.2.5-R4.0
+ + Added a new active ability for Herbalism! (Sunny Day)
+ + Added extra config options for the new Herbalism ability.
+ ! Changed the permissions a bit to make them more logical. (I'm sorry! I might have broken your permissions setup!)
+
+Version 1.2.0 | Tested on CB 1.2.5-R4.0
+ + Added configurations!
+ + Added debug mode.
+
+Version 1.0.1 | Tested on CB 1.2.5-R2.0
+ + Added permissions support!
+
+Version 1.0.0 | Tested on CB 1.2.5-R2.0
+ + First release
+ + Added Axes durability reduction passive ability
+ + Added command to check your current chance of triggering the ability
+ + Added command to check the durability of the item in hand
