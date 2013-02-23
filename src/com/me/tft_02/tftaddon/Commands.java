@@ -40,7 +40,6 @@ class Commands implements CommandExecutor {
                 sender.sendMessage("Type /tfthelp for a list of all the commands.");
             } else {
                 if (player.hasPermission("tftaddon.tftaddon")) {
-                    String plName = player.getName();
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Addon" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GOLD + "TfTAddon has these extra features for mcMMO:");
                     player.sendMessage(ChatColor.GREEN + "Reduce durability for Axes.");
@@ -66,6 +65,9 @@ class Commands implements CommandExecutor {
                     }
                     if (player.hasPermission("tftaddon.herbalism")) {
                         player.sendMessage(ChatColor.GREEN + "/tftherbalism" + ChatColor.GRAY + " Check Herbalism addon info.");
+                    }
+                    if (player.hasPermission("tftaddon.repair")) {
+                        player.sendMessage(ChatColor.GREEN + "/tftrepair" + ChatColor.GRAY + " Check Repair addon info.");
                     }
                     if (player.hasPermission("tftaddon.dura")) {
                         player.sendMessage(ChatColor.GREEN + "/tftdura" + ChatColor.GRAY + " Check durability of item in hand.");
@@ -105,32 +107,6 @@ class Commands implements CommandExecutor {
                     } else {
                         player.sendMessage(ChatColor.DARK_AQUA + "Sunny Day: " + ChatColor.GREEN + "Makes the sun shine bright.");
                         player.sendMessage(ChatColor.GRAY + "Crouch and left-click with " + summonAmount + " seeds in your hand.");
-                    }
-                }
-            }
-            return true;
-        } else if (cmd.getName().equalsIgnoreCase("tftfishing")) {
-            if (player == null) {
-                sender.sendMessage("This command does not support console usage.");
-            } else {
-                if (player.hasPermission("tftaddon.fishing")) {
-                    float fishlevel = users.getSkillLevel(player, "FISHING");
-
-                    player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT FISHING" + ChatColor.RED + "[]-----");
-                    player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
-                    player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
-                    player.sendMessage(ChatColor.DARK_AQUA + "Fisherman's Diet: " + ChatColor.GREEN + "Improves hunger restored from cooked fish.");
-                    player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "YOUR STATS" + ChatColor.RED + "[]-----");
-                    if (fishlevel >= 80) {
-                        player.sendMessage(ChatColor.RED + "Fisherman's Diet: " + ChatColor.YELLOW + "Rank 4");
-                    } else if (fishlevel >= 60) {
-                        player.sendMessage(ChatColor.RED + "Fisherman's Diet: " + ChatColor.YELLOW + "Rank 3");
-                    } else if (fishlevel >= 40) {
-                        player.sendMessage(ChatColor.RED + "Fisherman's Diet: " + ChatColor.YELLOW + "Rank 2");
-                    } else if (fishlevel >= 20) {
-                        player.sendMessage(ChatColor.RED + "Fisherman's Diet: " + ChatColor.YELLOW + "Rank 1");
-                    } else {
-                        player.sendMessage(ChatColor.RED + "Fisherman's Diet: " + ChatColor.YELLOW + "Rank 0");
                     }
                 }
             }
