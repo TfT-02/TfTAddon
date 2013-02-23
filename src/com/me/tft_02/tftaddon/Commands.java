@@ -1,7 +1,5 @@
 package com.me.tft_02.tftaddon;
 
-import java.util.logging.Level;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,7 +16,7 @@ class Commands implements CommandExecutor {
         plugin = instance;
     }
 
-    private UserProfiles users = new UserProfiles(plugin);
+    private UserProfiles users = new UserProfiles();
 
     private String duraChance;
 
@@ -43,7 +41,6 @@ class Commands implements CommandExecutor {
             } else {
                 if (player.hasPermission("tftaddon.tftaddon")) {
                     String plName = player.getName();
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tftaddon");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Addon" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GOLD + "TfTAddon has these extra features for mcMMO:");
                     player.sendMessage(ChatColor.GREEN + "Reduce durability for Axes.");
@@ -58,8 +55,6 @@ class Commands implements CommandExecutor {
                 sender.sendMessage("Available commands: /tftaddon /tfthelp");
             } else {
                 if (player.hasPermission("tftaddon.tfthelp")) {
-                    String plName = player.getName();
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tfthelp");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Help" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GOLD + "Commands:");
 
@@ -86,8 +81,6 @@ class Commands implements CommandExecutor {
                 if (player.hasPermission("tftaddon.axes")) {
                     float level_current = users.getSkillLevel(player, "AXES");
                     dataCalculations(level_current);
-                    String plName = player.getName();
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tftaxes");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT AXES" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "YOUR STATS" + ChatColor.RED + "[]-----");
@@ -103,9 +96,7 @@ class Commands implements CommandExecutor {
                     int summonAmount = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
                     int sunnydayUnlock = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_unlock_level");
                     float herbaValue = users.getSkillLevel(player, "HERBALISM");
-                    String plName = player.getName();
 
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tftherbalism");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT HERBALISM" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
@@ -124,9 +115,7 @@ class Commands implements CommandExecutor {
             } else {
                 if (player.hasPermission("tftaddon.fishing")) {
                     float fishlevel = users.getSkillLevel(player, "FISHING");
-                    String plName = player.getName();
 
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tftfishing");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT FISHING" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
@@ -155,9 +144,7 @@ class Commands implements CommandExecutor {
 
                     int blacksmithsinstinctUnlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
                     float repairValue = users.getSkillLevel(player, "REPAIR");
-                    String plName = player.getName();
 
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /tftrepair");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Repair" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
@@ -177,8 +164,7 @@ class Commands implements CommandExecutor {
                 if (player.hasPermission("tftaddon.dura")) {
                     ItemStack itemInHand = player.getItemInHand();
                     float durability = itemInHand.getDurability();
-                    String plName = player.getName();
-                    plugin.getLogger().log(Level.INFO, "[PLAYER_COMMAND] " + plName + ": /dura");
+
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Addon" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.RED + "Item durability is: " + ChatColor.YELLOW + durability);
                 }

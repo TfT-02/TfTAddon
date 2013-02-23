@@ -22,17 +22,14 @@ public class Herbalism {
         plugin = instance;
     }
 
-    private final UserProfiles users = new UserProfiles(plugin);
+    private final UserProfiles users = new UserProfiles();
 
     private boolean sunnydayReady = true;
 
     public void checkSunnyDay(Player player) {
         ItemStack item = player.getItemInHand();
-        Material summonItem;
-//        int summonAmount = 30;
-
-        summonItem = Material.SEEDS;
-        int summonAmount = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
+        Material summonItem = Material.SEEDS;
+        int summonAmount = TfTAddon.getInstance().getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
         int skillLvl = (users.getSkillLevel(player, "HERBALISM"));
 
         if (skillLvl >= 50 && item.getType().equals(summonItem)) {
@@ -64,7 +61,7 @@ public class Herbalism {
                         players.sendMessage(ChatColor.GOLD + plName + " used Sunny Day!");
                     }
                 }
-                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(TfTAddon.getInstance(), new Runnable() {
                     @Override
                     public void run() {
                         sunnydayReady = true;
@@ -76,7 +73,7 @@ public class Herbalism {
 
     @SuppressWarnings("unused")
     String getWeatherMessages() {
-        String[] defaultWeatherMessages = new String[]{"The sunlight is strong!", "The sunlight turned harsh!", "The sunlight got bright!"};
+        String[] defaultWeatherMessages = new String[] { "The sunlight is strong!", "The sunlight turned harsh!", "The sunlight got bright!" };
         List<String> weatherMessages = Arrays.asList(defaultWeatherMessages);
         Random random = new Random();
         List<String> messages = weatherMessages;

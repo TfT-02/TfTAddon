@@ -17,7 +17,7 @@ public class Repair {
         plugin = instance;
     }
 
-    private final UserProfiles users = new UserProfiles(plugin);
+    private final UserProfiles users = new UserProfiles();
 
     public static List<String> warnedPlayers = new ArrayList<String>();
 
@@ -26,7 +26,7 @@ public class Repair {
             return;
         }
 
-        int level_unlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
+        int level_unlock = TfTAddon.getInstance().getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
         float level_current = users.getSkillLevel(player, "REPAIR");
 //      float level_unlock = 800;
 
@@ -41,7 +41,7 @@ public class Repair {
         float currentdura = is.getDurability();
         float maxdurability = is.getType().getMaxDurability();
 //        float configpercentageleft = 10;
-        float configpercentageleft = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left");
+        float configpercentageleft = TfTAddon.getInstance().getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left");
         float warningvalue = Math.round((configpercentageleft / 100) * maxdurability);
 
         if (!hasBeenWarned(player)) {

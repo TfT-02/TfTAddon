@@ -1,16 +1,10 @@
 package com.me.tft_02.tftaddon.util;
 
-
 import org.bukkit.entity.Player;
 
 import com.gmail.nossr50.api.ExperienceAPI;
-import com.me.tft_02.tftaddon.TfTAddon;
 
 public class UserProfiles {
-
-    public UserProfiles(final TfTAddon instance) {
-        TfTAddon plugin = instance;
-    }
 
     /**
      * Checks what level a player is.

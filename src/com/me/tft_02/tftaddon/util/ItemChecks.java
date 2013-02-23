@@ -1,13 +1,12 @@
 package com.me.tft_02.tftaddon.util;
 
-
 import org.bukkit.inventory.ItemStack;
 
 public class ItemChecks {
 
     /**
      * Checks if the item is a sword.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a sword, false otherwise
      */
@@ -27,7 +26,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a hoe.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a hoe, false otherwise
      */
@@ -47,7 +46,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a shovel.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a shovel, false otherwise
      */
@@ -67,7 +66,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is an axe.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is an axe, false otherwise
      */
@@ -87,7 +86,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a pickaxe.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a pickaxe, false otherwise
      */
@@ -107,7 +106,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a helmet.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a helmet, false otherwise
      */
@@ -126,7 +125,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a chestplate.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a chestplate, false otherwise
      */
@@ -145,7 +144,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a pair of pants.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a pair of pants, false otherwise
      */
@@ -164,7 +163,7 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a pair of boots.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a pair of boots, false otherwise
      */
@@ -183,7 +182,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a wearable armor piece.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is armor, false otherwise
      */
@@ -193,7 +192,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a leather armor piece.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is leather armor, false otherwise
      */
@@ -212,7 +211,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a gold armor piece.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is gold armor, false otherwise
      */
@@ -231,7 +230,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is an iron armor piece.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is iron armor, false otherwise
      */
@@ -250,7 +249,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a diamond armor piece.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is diamond armor, false otherwise
      */
@@ -269,7 +268,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a tool, false otherwise
      */
@@ -279,7 +278,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a stone tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a stone tool, false otherwise
      */
@@ -299,7 +298,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a wooden tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a wooden tool, false otherwise
      */
@@ -319,7 +318,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a string tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a string tool, false otherwise
      */
@@ -334,10 +333,9 @@ public class ItemChecks {
         }
     }
 
-
     /**
      * Checks to see if an item is a gold tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a stone tool, false otherwise
      */
@@ -357,7 +355,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is an iron tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is an iron tool, false otherwise
      */
@@ -378,7 +376,7 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a diamond tool.
-     *
+     * 
      * @param is Item to check
      * @return true if the item is a diamond tool, false otherwise
      */

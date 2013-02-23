@@ -1,6 +1,5 @@
 package com.me.tft_02.tftaddon.listener;
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -8,7 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
-import com.gmail.nossr50.api.ExperienceAPI;
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
 import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
@@ -20,7 +18,7 @@ public class McMMOListener implements Listener {
         plugin = instance;
     }
 
-    final UserProfiles users = new UserProfiles(plugin);
+    final UserProfiles users = new UserProfiles();
 
     /**
      * Monitor McMMOPlayerLevelUpEvent events.
@@ -31,12 +29,12 @@ public class McMMOListener implements Listener {
     public void onLevelupEvent(McMMOPlayerLevelUpEvent event) {
         int levelRequired = plugin.getConfig().getInt("Announce_Level_Up.Power_Level");
         if (levelRequired == 0) levelRequired = 100;
-        
+
         Player player = event.getPlayer();
-        int powerlevel = ExperienceAPI.getPowerLevel(player);
-        
-        if (powerlevel / levelRequired > 1) {
-            Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + powerlevel);
+        int power_level = users.getSkillLevel(player, null);
+
+        if (power_level / levelRequired > 1) {
+            Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
         }
     }
 

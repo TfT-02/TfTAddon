@@ -1,6 +1,5 @@
 package com.me.tft_02.tftaddon.listener;
 
-
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -26,7 +25,7 @@ public class EntityListener implements Listener {
 
     private final Axes axes = new Axes(plugin);
     private final Repair repair = new Repair(plugin);
-    final UserProfiles users = new UserProfiles(plugin);
+    final UserProfiles users = new UserProfiles();
 
     /**
      * Monitor EntityDamageByEntity events.
@@ -40,7 +39,7 @@ public class EntityListener implements Listener {
         }
 
         if (event.getEntity() instanceof LivingEntity) {
-                combatChecksTfT(event);
+            combatChecksTfT(event);
         }
     }
 

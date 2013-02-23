@@ -11,8 +11,10 @@ import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.McMMOListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
+import com.me.tft_02.tftaddon.util.Metrics;
 
 public class TfTAddon extends JavaPlugin {
+    public static TfTAddon instance;
 
     private final EntityListener entityListener = new EntityListener(this);
     private final PlayerListener playerListener = new PlayerListener(this);
@@ -21,11 +23,16 @@ public class TfTAddon extends JavaPlugin {
 
     public static boolean debug_mode = false;
 
+    public static TfTAddon getInstance() {
+        return instance;
+    }
+
     /**
      * Run things on enable.
      */
     @Override
     public void onEnable() {
+        instance = this;
         PluginManager pm = getServer().getPluginManager();
         if (pm.getPlugin("mcMMO") == null || !pm.isPluginEnabled("mcMMO")) {
             this.getLogger().log(Level.WARNING, " requires mcMMO to run, please download mcMMO");
@@ -49,7 +56,7 @@ public class TfTAddon extends JavaPlugin {
             try {
                 Metrics metrics = new Metrics(this);
                 metrics.start();
-            } catch ( IOException e) {
+            } catch (IOException e) {
                 System.out.println("Failed to submit stats.");
             }
         }
@@ -68,7 +75,7 @@ public class TfTAddon extends JavaPlugin {
 
         config.addDefault("Skills.Repair.BlacksmithsInstinct_unlock_level", 800);
         config.addDefault("Skills.Repair.BlacksmithsInstinct_percentage_durability_left", 10);
-        
+
         config.addDefault("Announce_Level_Up.Power_Level", 100);
 
         config.options().copyDefaults(true);
