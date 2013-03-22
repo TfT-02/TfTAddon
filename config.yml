@@ -13,6 +13,8 @@ Skills:
   Repair:
     BlacksmithsInstinct_unlock_level: 800
     BlacksmithsInstinct_percentage_durability_left: 10
+  Mining:
+    SuperBreaker_InstaBreak_Obsidian: false
 Announce_Level_Up:
   Power_Level: 1000
   Range: 75.0
