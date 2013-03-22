@@ -37,7 +37,7 @@ public class McMMOListener implements Listener {
         Player player = event.getPlayer();
         int power_level = users.getSkillLevel(player, null);
 
-        if (power_level / levelRequired > 1) {
+        if ((power_level % levelRequired) == 0) {
             if (messageDistance > 0) {
                 for (Player players : player.getWorld().getPlayers()) {
                     if (players != player && players.getLocation().distance(player.getLocation()) < messageDistance) {
