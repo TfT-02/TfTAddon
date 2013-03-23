@@ -2,7 +2,7 @@ name: TfTAddon
 author: TfT_02
 main: com.me.tft_02.tftaddon.TfTAddon
 description: mcMMO Addon which adds extra features.
-version: 1.6.11
+version: 1.6.12
 softdepend: [mcMMO]
 commands:
    tftaddon:
