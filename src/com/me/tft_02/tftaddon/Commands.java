@@ -60,7 +60,9 @@ class Commands implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Help" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GOLD + "Commands:");
 
-                    if (player.hasPermission("tftaddon.tftaddon")) {
+                    if (player.hasPermission("tftaddon.commands.reload")) {
+                        player.sendMessage(ChatColor.GREEN + "/tftaddon [reload]" + ChatColor.GRAY + " Displays general info, or reload the config file.");
+                    } else if (player.hasPermission("tftaddon.tftaddon")) {
                         player.sendMessage(ChatColor.GREEN + "/tftaddon" + ChatColor.GRAY + " Displays general info.");
                     }
                     if (player.hasPermission("tftaddon.axes")) {
@@ -73,7 +75,7 @@ class Commands implements CommandExecutor {
                         player.sendMessage(ChatColor.GREEN + "/tftrepair" + ChatColor.GRAY + " Check Repair addon info.");
                     }
                     if (player.hasPermission("tftaddon.dura")) {
-                        player.sendMessage(ChatColor.GREEN + "/tftdura" + ChatColor.GRAY + " Check durability of item in hand.");
+                        player.sendMessage(ChatColor.GREEN + "/dura" + ChatColor.GRAY + " Check durability of item in hand.");
                     }
                 }
             }
