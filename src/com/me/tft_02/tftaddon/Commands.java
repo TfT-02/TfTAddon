@@ -39,6 +39,9 @@ class Commands implements CommandExecutor {
                 sender.sendMessage("TfTAddon adds extra features for mcMMO.");
                 sender.sendMessage("Type /tfthelp for a list of all the commands.");
             } else {
+                if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+                    return reloadConfiguration(sender);
+                }
                 if (player.hasPermission("tftaddon.tftaddon")) {
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Addon" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GOLD + "TfTAddon has these extra features for mcMMO:");
@@ -158,5 +161,15 @@ class Commands implements CommandExecutor {
         } else if (level_current >= dura_level_cap) {
             duraChance = String.valueOf(dura_percentage_max);
         }
+    }
+
+    private boolean reloadConfiguration(CommandSender sender) {
+        if (sender instanceof Player && !((Player) sender).hasPermission("tftaddon.commands.reload")) {
+            return false;
+        }
+
+        plugin.reloadConfig();
+        sender.sendMessage(ChatColor.GREEN + "Configuration reloaded.");
+        return false;
     }
 }

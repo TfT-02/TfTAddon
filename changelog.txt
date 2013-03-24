@@ -7,6 +7,7 @@ Key:
   - Removal
 
 Version 1.6.12 | Tested on CB 1.5.1-R0.1 and mcMMO 1.4.04
+ + Added config reload command; /tftaddon reload
 
 Version 1.6.11 | Tested on CB 1.5.1-R0.1 and mcMMO 1.4.04
  = Fixed a bug with the level up announcements

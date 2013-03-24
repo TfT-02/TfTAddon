@@ -34,6 +34,7 @@ permissions:
         description: Gives access to all commands
         children:
             tftaddon.tftaddon: true
+            tftaddon.commands.reload: true
             tftaddon.tfthelp: true
             tftaddon.axes: true
             tftaddon.herbalism: true
@@ -61,3 +62,6 @@ permissions:
     tftaddon.dura:
         description: Check the durability of item in hand.
         default: false
+    tftaddon.commands.reload:
+        description: Reload the configuration file.
+        default: op
