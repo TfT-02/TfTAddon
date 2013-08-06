@@ -1,4 +1,4 @@
-package com.me.tft_02.tftaddon.listener;
+package com.me.tft_02.tftaddon.hooks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,11 +12,6 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class McMMOListener implements Listener {
-    private TfTAddon plugin;
-
-    public McMMOListener(final TfTAddon instance) {
-        plugin = instance;
-    }
 
     final UserProfiles users = new UserProfiles();
 
@@ -27,7 +22,7 @@ public class McMMOListener implements Listener {
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onLevelupEvent(McMMOPlayerLevelUpEvent event) {
-        int levelRequired = plugin.getConfig().getInt("Announce_Level_Up.Power_Level");
+        int levelRequired = TfTAddon.getInstance().getConfig().getInt("Announce_Level_Up.Power_Level");
         double messageDistance = TfTAddon.getInstance().getConfig().getDouble("Announce_Level_Up.Range");
 
         if (levelRequired <= 0) {
@@ -44,7 +39,8 @@ public class McMMOListener implements Listener {
                         players.sendMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
                     }
                 }
-            } else {
+            }
+            else {
                 Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
             }
         }
