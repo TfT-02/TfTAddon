@@ -13,9 +13,11 @@ import com.me.tft_02.tftaddon.listener.McMMOListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
 import com.me.tft_02.tftaddon.runnables.UpdateCheckerTask;
 import com.me.tft_02.tftaddon.util.Metrics;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public class TfTAddon extends JavaPlugin {
     public static TfTAddon instance;
+    public boolean worldGuardEnabled = false;
 
     private final EntityListener entityListener = new EntityListener(this);
     private final PlayerListener playerListener = new PlayerListener(this);
@@ -123,6 +125,24 @@ public class TfTAddon extends JavaPlugin {
         this.getLogger().log(Level.INFO, "Skills.Repair.BlacksmithsInstinct_percentage_durability_left " + getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left"));
         this.getLogger().log(Level.INFO, " ");
         this.getLogger().log(Level.INFO, "Announce_Level_Up.Power_Level " + getConfig().getInt("Announce_Level_Up.Power_Level"));
+    private void setupWorldGuard() {
+        if (getServer().getPluginManager().isPluginEnabled("WorldGuard")) {
+            worldGuardEnabled = true;
+//            debug("WorldGuard found!");
+// Schedule region check
+        }
+    }
+
+    public WorldGuardPlugin getWorldGuard() {
+        Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
+
+        if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
+            return null;
+        }
+
+        return (WorldGuardPlugin) plugin;
+    }
+
     private void checkForUpdates() {
         if (!Config.getInstance().getUpdateCheckEnabled()) {
             return;
