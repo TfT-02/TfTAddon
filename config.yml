@@ -1,20 +1,29 @@
-# 
-#  TfTAddon configuration
 General:
-  debug_mode_enabled: false
-  stats_tracking_enabled: true
+    # Allow TfTAddon to report on basic anonymous usage
+    Stats_Tracking: true
+
+    # Allow TfTAddon to check if a new version is available
+    Update_Check: true
+
+    # Should TfTAddon print out debug messages?
+    Verbose_Logging: false
+
+    # Should TfTAddon over-write configs to update, or make new ones ending in .new?
+    Config_Update_Overwrite: true
+
 Skills:
-  Axes:
-    Dura_level_cap: 100
-    Dura_percentage_max: 50
-  Herbalism:
-    SunnyDay_cost: 30
-    SunnyDay_unlock_level: 50
-  Repair:
-    BlacksmithsInstinct_unlock_level: 800
-    BlacksmithsInstinct_percentage_durability_left: 10
-  Mining:
-    SuperBreaker_InstaBreak_Obsidian: false
+    Axes:
+      Dura_level_cap: 100
+      Dura_percentage_max: 50
+    Herbalism:
+      SunnyDay_cost: 30
+      SunnyDay_unlock_level: 50
+    Repair:
+      BlacksmithsInstinct_unlock_level: 800
+      BlacksmithsInstinct_percentage_durability_left: 10
+    Mining:
+      SuperBreaker_InstaBreak_Obsidian: false
+
 Announce_Level_Up:
-  Power_Level: 1000
-  Range: 75.0
+    Power_Level: 1000
+    Range: 75.0
