@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
 
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.hooks.McMMOListener;
@@ -15,7 +16,6 @@ import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
 import com.me.tft_02.tftaddon.runnables.UpdateCheckerTask;
-import com.me.tft_02.tftaddon.util.Metrics;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public class TfTAddon extends JavaPlugin {

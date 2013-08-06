@@ -2,8 +2,8 @@ name: TfTAddon
 author: TfT_02
 main: com.me.tft_02.tftaddon.TfTAddon
 description: mcMMO Addon which adds extra features.
-version: 1.6.12
-softdepend: [mcMMO]
+version: ${project.version}-b${BUILD_NUMBER}
+softdepend: [mcMMO, WorldGuard]
 commands:
    tftaddon:
       description: Get information about the plugin.
