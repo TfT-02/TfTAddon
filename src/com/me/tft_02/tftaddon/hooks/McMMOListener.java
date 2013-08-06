@@ -8,7 +8,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
+import com.gmail.nossr50.events.hardcore.McMMOPlayerDeathPenaltyEvent;
 import com.me.tft_02.tftaddon.TfTAddon;
+import com.me.tft_02.tftaddon.util.RegionUtils;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class McMMOListener implements Listener {
@@ -16,7 +18,7 @@ public class McMMOListener implements Listener {
     final UserProfiles users = new UserProfiles();
 
     /**
-     * Monitor McMMOPlayerLevelUpEvent events.
+     * Monitor McMMOPlayerLevelUpEvent.
      * 
      * @param event The event to monitor
      */
@@ -46,4 +48,19 @@ public class McMMOListener implements Listener {
         }
     }
 
+    /**
+     * Check McMMOPlayerDeathPenaltyEvent.
+     * 
+     * @param event The event to check
+     */
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onDeathPenaltyEvent(McMMOPlayerDeathPenaltyEvent event) {
+        if (!TfTAddon.p.worldGuardEnabled) {
+            return;
+        }
+
+        if (!RegionUtils.getDeathConsequencesEnabled(event.getPlayer().getLocation())) {
+            event.setCancelled(true);
+        }
+    }
 }

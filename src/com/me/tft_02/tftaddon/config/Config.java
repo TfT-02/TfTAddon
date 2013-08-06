@@ -31,8 +31,8 @@ public class Config extends AutoUpdateConfigLoader {
     public boolean getConfigOverwriteEnabled() { return config.getBoolean("General.Config_Update_Overwrite", true); }
 
     /* WORLDGUARD SETTINGS */
-    public boolean getUseAsWhitelist() { return config.getBoolean("WorldGuard.Use_As_Whitelist", false); }
-    public List<String> getRegionList() { return config.getStringList("WorldGuard.Regions"); }
+    public boolean getUseAsWhitelist() { return config.getBoolean("WorldGuard.Death_Penalty.Use_As_Whitelist", false); }
+    public List<String> getRegionList() { return config.getStringList("WorldGuard.Death_Penalty.Regions"); }
 
     /* @formatter:on */
 }

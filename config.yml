@@ -27,3 +27,12 @@ Skills:
 Announce_Level_Up:
     Power_Level: 1000
     Range: 75.0
+
+WorldGuard:
+    Death_Penalty:
+        # Use the region list as a whitelist?
+        Use_As_Whitelist: false
+
+        # Players will (not) suffer hardcore death penalties in the regions listed below.
+        Regions:
+        - no_penalty_here
