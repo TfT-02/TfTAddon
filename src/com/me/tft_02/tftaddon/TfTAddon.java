@@ -11,6 +11,7 @@ import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.McMMOListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
+import com.me.tft_02.tftaddon.runnables.UpdateCheckerTask;
 import com.me.tft_02.tftaddon.util.Metrics;
 
 public class TfTAddon extends JavaPlugin {
@@ -20,6 +21,8 @@ public class TfTAddon extends JavaPlugin {
     private final PlayerListener playerListener = new PlayerListener(this);
     private final BlockListener blockListener = new BlockListener(this);
     private final McMMOListener mcmmoListener = new McMMOListener(this);
+    // Update Check
+    public boolean updateAvailable;
 
     public static boolean debug_mode = false;
 
@@ -53,6 +56,7 @@ public class TfTAddon extends JavaPlugin {
 
         registerCommands();
         if (getConfig().getBoolean("General.stats_tracking_enabled")) {
+        checkForUpdates();
             try {
                 Metrics metrics = new Metrics(this);
                 metrics.start();
@@ -119,5 +123,18 @@ public class TfTAddon extends JavaPlugin {
         this.getLogger().log(Level.INFO, "Skills.Repair.BlacksmithsInstinct_percentage_durability_left " + getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left"));
         this.getLogger().log(Level.INFO, " ");
         this.getLogger().log(Level.INFO, "Announce_Level_Up.Power_Level " + getConfig().getInt("Announce_Level_Up.Power_Level"));
+    private void checkForUpdates() {
+        if (!Config.getInstance().getUpdateCheckEnabled()) {
+            return;
+        }
+
+        getServer().getScheduler().runTaskAsynchronously(this, new UpdateCheckerTask());
+    }
+
+    public void updateCheckerCallback(boolean updateAvailable) {
+        this.updateAvailable = updateAvailable;
+        if (updateAvailable) {
+            getLogger().info(ChatColor.GRAY + "There is a new version available on BukkitDev.");
+        }
     }
 }
