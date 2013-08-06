@@ -3,33 +3,33 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.hooks.McMMOListener;
 import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
-import com.me.tft_02.tftaddon.listener.McMMOListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
 import com.me.tft_02.tftaddon.runnables.UpdateCheckerTask;
 import com.me.tft_02.tftaddon.util.Metrics;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public class TfTAddon extends JavaPlugin {
-    public static TfTAddon instance;
+    public static TfTAddon p;
+
     public boolean worldGuardEnabled = false;
 
-    private final EntityListener entityListener = new EntityListener(this);
-    private final PlayerListener playerListener = new PlayerListener(this);
-    private final BlockListener blockListener = new BlockListener(this);
-    private final McMMOListener mcmmoListener = new McMMOListener(this);
     // Update Check
     public boolean updateAvailable;
 
     public static boolean debug_mode = false;
 
     public static TfTAddon getInstance() {
-        return instance;
+        return p;
     }
 
     /**
@@ -37,35 +37,36 @@ public class TfTAddon extends JavaPlugin {
      */
     @Override
     public void onEnable() {
-        instance = this;
-        PluginManager pm = getServer().getPluginManager();
-        if (pm.getPlugin("mcMMO") == null || !pm.isPluginEnabled("mcMMO")) {
-            this.getLogger().log(Level.WARNING, " requires mcMMO to run, please download mcMMO");
-            pm.disablePlugin(this);
-            return;
-        }
+        p = this;
+
+        setupMcMMO();
+
         if (getConfig().getBoolean("General.debug_mode_enabled")) {
             this.getLogger().log(Level.WARNING, "Debug mode is enabled, this is only for advanced users!");
             debug_mode = true;
-            printConfiguration();
         }
         setupConfiguration();
-        //Register events
-        pm.registerEvents(entityListener, this);
-        pm.registerEvents(playerListener, this);
-        pm.registerEvents(blockListener, this);
-        pm.registerEvents(mcmmoListener, this);
+        registerEvents();
 
         registerCommands();
-        if (getConfig().getBoolean("General.stats_tracking_enabled")) {
         checkForUpdates();
+
+        if (Config.getInstance().getStatsTrackingEnabled()) {
             try {
                 Metrics metrics = new Metrics(this);
                 metrics.start();
-            } catch (IOException e) {
-                System.out.println("Failed to submit stats.");
             }
+            catch (IOException e) {}
         }
+    }
+
+    private void registerEvents() {
+        PluginManager pm = getServer().getPluginManager();
+
+        pm.registerEvents(new EntityListener(), this);
+        pm.registerEvents(new PlayerListener(), this);
+        pm.registerEvents(new BlockListener(), this);
+        pm.registerEvents(new McMMOListener(), this);
     }
 
     private void setupConfiguration() {
@@ -108,23 +109,19 @@ public class TfTAddon extends JavaPlugin {
         this.getServer().getScheduler().cancelTasks(this);
     }
 
-    private void printConfiguration() {
-        this.getLogger().log(Level.INFO, " ");
-        this.getLogger().log(Level.INFO, "Debug mode");
-        this.getLogger().log(Level.INFO, "Printing the full config file:");
-        this.getLogger().log(Level.INFO, "General.debug_mode_enabled: " + getConfig().getBoolean("General.debug_mode_enabled"));
-        this.getLogger().log(Level.INFO, "General.stats_tracking_enabled " + getConfig().getBoolean("General.stats_tracking_enabled"));
-        this.getLogger().log(Level.INFO, " ");
-        this.getLogger().log(Level.INFO, "Skills.Axes.Dura_level_cap " + getConfig().getInt("Skills.Axes.Dura_level_cap"));
-        this.getLogger().log(Level.INFO, "Skills.Axes.Dura_percentage_max " + getConfig().getInt("Skills.Axes.Dura_percentage_max"));
-        this.getLogger().log(Level.INFO, " ");
-        this.getLogger().log(Level.INFO, "Skills.Herbalism.SunnyDay_unlock_level " + getConfig().getInt("Skills.Herbalism.SunnyDay_unlock_level"));
-        this.getLogger().log(Level.INFO, "Skills.Herbalism.SunnyDay_cost " + getConfig().getInt("Skills.Herbalism.SunnyDay_cost"));
-        this.getLogger().log(Level.INFO, " ");
-        this.getLogger().log(Level.INFO, "Skills.Repair.BlacksmithsInstinct_unlock_level " + getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level"));
-        this.getLogger().log(Level.INFO, "Skills.Repair.BlacksmithsInstinct_percentage_durability_left " + getConfig().getInt("Skills.Repair.BlacksmithsInstinct_percentage_durability_left"));
-        this.getLogger().log(Level.INFO, " ");
-        this.getLogger().log(Level.INFO, "Announce_Level_Up.Power_Level " + getConfig().getInt("Announce_Level_Up.Power_Level"));
+    public void debug(String message) {
+        getLogger().info("[Debug] " + message);
+    }
+
+    private void setupMcMMO() {
+        PluginManager pm = getServer().getPluginManager();
+        if (pm.getPlugin("mcMMO") == null || !pm.isPluginEnabled("mcMMO")) {
+            this.getLogger().log(Level.WARNING, " requires mcMMO to run, please download mcMMO");
+            pm.disablePlugin(this);
+            return;
+        }
+    }
+
     private void setupWorldGuard() {
         if (getServer().getPluginManager().isPluginEnabled("WorldGuard")) {
             worldGuardEnabled = true;
@@ -154,6 +151,7 @@ public class TfTAddon extends JavaPlugin {
     public void updateCheckerCallback(boolean updateAvailable) {
         this.updateAvailable = updateAvailable;
         if (updateAvailable) {
+            getLogger().info(ChatColor.GRAY + "You are using an outdated version of " + ChatColor.GOLD + "TfTAddon!");
             getLogger().info(ChatColor.GRAY + "There is a new version available on BukkitDev.");
         }
     }
