@@ -16,13 +16,7 @@ import com.me.tft_02.tftaddon.skills.Repair;
 import com.me.tft_02.tftaddon.util.ItemChecks;
 
 public class BlockListener implements Listener {
-    private TfTAddon plugin;
-
-    public BlockListener(final TfTAddon instance) {
-        plugin = instance;
-    }
-
-    private final Repair repair = new Repair(plugin);
+    private final Repair repair = new Repair();
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
@@ -39,7 +33,7 @@ public class BlockListener implements Listener {
         Player player = event.getPlayer();
         Block block = event.getBlock();
 
-        if (!plugin.getConfig().getBoolean("Skills.Mining.SuperBreaker_InstaBreak_Obsidian")) {
+        if (!TfTAddon.getInstance().getConfig().getBoolean("Skills.Mining.SuperBreaker_InstaBreak_Obsidian")) {
             return;
         }
 

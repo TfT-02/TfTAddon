@@ -16,12 +16,6 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Herbalism {
-    private TfTAddon plugin;
-
-    public Herbalism(final TfTAddon instance) {
-        plugin = instance;
-    }
-
     private final UserProfiles users = new UserProfiles();
 
     private boolean sunnydayReady = true;

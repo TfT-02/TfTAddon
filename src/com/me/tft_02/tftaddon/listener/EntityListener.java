@@ -10,21 +10,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.skills.Axes;
 import com.me.tft_02.tftaddon.skills.Repair;
 import com.me.tft_02.tftaddon.util.ItemChecks;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class EntityListener implements Listener {
-    private TfTAddon plugin;
-
-    public EntityListener(final TfTAddon instance) {
-        plugin = instance;
-    }
-
-    private final Axes axes = new Axes(plugin);
-    private final Repair repair = new Repair(plugin);
+    private final Axes axes = new Axes();
+    private final Repair repair = new Repair();
     final UserProfiles users = new UserProfiles();
 
     /**
@@ -53,19 +46,19 @@ public class EntityListener implements Listener {
         EntityType damagerType = damager.getType();
 
         switch (damagerType) {
-        case PLAYER:
-            Player attacker = (Player) event.getDamager();
-            ItemStack itemInHand = attacker.getItemInHand();
+            case PLAYER:
+                Player attacker = (Player) event.getDamager();
+                ItemStack itemInHand = attacker.getItemInHand();
 
-            if (ItemChecks.isAxe(itemInHand)) {
-                axes.axeDurabilityCheck(attacker, itemInHand);
-            }
-            if (ItemChecks.isRepairable(itemInHand)) {
-                repair.checkRepair(attacker, itemInHand);
-            }
-            break;
-        default:
-            break;
+                if (ItemChecks.isAxe(itemInHand)) {
+                    axes.axeDurabilityCheck(attacker, itemInHand);
+                }
+                if (ItemChecks.isRepairable(itemInHand)) {
+                    repair.checkRepair(attacker, itemInHand);
+                }
+                break;
+            default:
+                break;
         }
     }
 }

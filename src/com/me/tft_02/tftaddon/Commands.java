@@ -38,7 +38,8 @@ class Commands implements CommandExecutor {
             if (player == null) {
                 sender.sendMessage("TfTAddon adds extra features for mcMMO.");
                 sender.sendMessage("Type /tfthelp for a list of all the commands.");
-            } else {
+            }
+            else {
                 if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
                     return reloadConfiguration(sender);
                 }
@@ -52,17 +53,20 @@ class Commands implements CommandExecutor {
                 }
             }
             return true;
-        } else if (cmd.getName().equalsIgnoreCase("tfthelp")) {
+        }
+        else if (cmd.getName().equalsIgnoreCase("tfthelp")) {
             if (player == null) {
                 sender.sendMessage("Available commands: /tftaddon /tfthelp");
-            } else {
+            }
+            else {
                 if (player.hasPermission("tftaddon.tfthelp")) {
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Help" + ChatColor.RED + "[]-----");
                     player.sendMessage(ChatColor.GOLD + "Commands:");
 
                     if (player.hasPermission("tftaddon.commands.reload")) {
                         player.sendMessage(ChatColor.GREEN + "/tftaddon [reload]" + ChatColor.GRAY + " Displays general info, or reload the config file.");
-                    } else if (player.hasPermission("tftaddon.tftaddon")) {
+                    }
+                    else if (player.hasPermission("tftaddon.tftaddon")) {
                         player.sendMessage(ChatColor.GREEN + "/tftaddon" + ChatColor.GRAY + " Displays general info.");
                     }
                     if (player.hasPermission("tftaddon.axes")) {
@@ -81,10 +85,12 @@ class Commands implements CommandExecutor {
             }
             return true;
 
-        } else if (cmd.getName().equalsIgnoreCase("tftaxes")) {
+        }
+        else if (cmd.getName().equalsIgnoreCase("tftaxes")) {
             if (player == null) {
                 sender.sendMessage("This command does not support console usage.");
-            } else {
+            }
+            else {
                 if (player.hasPermission("tftaddon.axes")) {
                     float level_current = users.getSkillLevel(player, "AXES");
                     dataCalculations(level_current);
@@ -95,10 +101,12 @@ class Commands implements CommandExecutor {
                 }
             }
             return true;
-        } else if (cmd.getName().equalsIgnoreCase("tftherbalism")) {
+        }
+        else if (cmd.getName().equalsIgnoreCase("tftherbalism")) {
             if (player == null) {
                 sender.sendMessage("This command does not support console usage.");
-            } else {
+            }
+            else {
                 if (player.hasPermission("tftaddon.herbalism")) {
                     int summonAmount = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
                     int sunnydayUnlock = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_unlock_level");
@@ -109,7 +117,8 @@ class Commands implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
                     if (herbaValue < sunnydayUnlock) {
                         player.sendMessage(ChatColor.GRAY + "LOCKED UNTIL " + sunnydayUnlock + "+ SKILL (SUNNY DAY)");
-                    } else {
+                    }
+                    else {
                         player.sendMessage(ChatColor.DARK_AQUA + "Sunny Day: " + ChatColor.GREEN + "Makes the sun shine bright.");
                         player.sendMessage(ChatColor.GRAY + "Crouch and left-click with " + summonAmount + " seeds in your hand.");
                     }
@@ -117,10 +126,12 @@ class Commands implements CommandExecutor {
             }
             return true;
 
-        } else if (cmd.getName().equalsIgnoreCase("tftrepair")) {
+        }
+        else if (cmd.getName().equalsIgnoreCase("tftrepair")) {
             if (player == null) {
                 sender.sendMessage("This command does not support console usage.");
-            } else {
+            }
+            else {
                 if (player.hasPermission("tftaddon.repair")) {
 
                     int blacksmithsinstinctUnlock = plugin.getConfig().getInt("Skills.Repair.BlacksmithsInstinct_unlock_level");
@@ -131,17 +142,20 @@ class Commands implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
                     if (repairValue < blacksmithsinstinctUnlock) {
                         player.sendMessage(ChatColor.GRAY + "LOCKED UNTIL " + blacksmithsinstinctUnlock + "+ SKILL (BLACKSMITH'S INSTINCT)");
-                    } else {
+                    }
+                    else {
                         player.sendMessage(ChatColor.DARK_AQUA + "Blacksmith's instinct: " + ChatColor.GREEN + "Sense when tools need a repair.");
                     }
                 }
             }
             return true;
 
-        } else if (cmd.getName().equalsIgnoreCase("dura")) {
+        }
+        else if (cmd.getName().equalsIgnoreCase("dura")) {
             if (player == null) {
                 sender.sendMessage("This command does not support console usage.");
-            } else {
+            }
+            else {
                 if (player.hasPermission("tftaddon.dura")) {
                     ItemStack itemInHand = player.getItemInHand();
                     float durability = itemInHand.getDurability();
@@ -160,7 +174,8 @@ class Commands implements CommandExecutor {
         dura_percentage_max = plugin.getConfig().getInt("Skills.Axes.Dura_percentage_max");
         if (level_current < dura_level_cap) {
             duraChance = String.valueOf((dura_percentage_max / dura_level_cap) * level_current);
-        } else if (level_current >= dura_level_cap) {
+        }
+        else if (level_current >= dura_level_cap) {
             duraChance = String.valueOf(dura_percentage_max);
         }
     }

@@ -11,20 +11,13 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.skills.Herbalism;
 import com.me.tft_02.tftaddon.skills.Repair;
 import com.me.tft_02.tftaddon.util.ItemChecks;
 
 public class PlayerListener implements Listener {
-    private TfTAddon plugin;
-
-    public PlayerListener(final TfTAddon instance) {
-        plugin = instance;
-    }
-
-    private final Repair repair = new Repair(plugin);
-    private final Herbalism herbalism = new Herbalism(plugin);
+    private final Repair repair = new Repair();
+    private final Herbalism herbalism = new Herbalism();
 
     /**
      * Monitor PlayerInteract events.
@@ -43,31 +36,32 @@ public class PlayerListener implements Listener {
         /* Fix for NPE on interacting with air */
         if (block == null) {
             material = Material.AIR;
-        } else {
+        }
+        else {
             material = block.getType();
         }
 
         switch (action) {
-        case LEFT_CLICK_AIR:
-        case LEFT_CLICK_BLOCK:
+            case LEFT_CLICK_AIR:
+            case LEFT_CLICK_BLOCK:
 
-            /* WEATHER CHECKS */
-            if (player.isSneaking() && player.hasPermission("tftaddon.herbalism") && inHand.getType().equals(Material.SEEDS)) {
-                herbalism.checkSunnyDay(player);
-            }
-            break;
-        case RIGHT_CLICK_BLOCK:
-            if ((ItemChecks.isHoe(inHand)) && (block.getTypeId() == 2)) {
-                repair.checkDurability(player, inHand);
-            }
-            break;
-        case RIGHT_CLICK_AIR:
-            if (inHand.getType().equals(Material.BOW)) {
-                repair.checkDurability(player, inHand);
-            }
-            break;
-        default:
-            break;
+                /* WEATHER CHECKS */
+                if (player.isSneaking() && player.hasPermission("tftaddon.herbalism") && inHand.getType().equals(Material.SEEDS)) {
+                    herbalism.checkSunnyDay(player);
+                }
+                break;
+            case RIGHT_CLICK_BLOCK:
+                if ((ItemChecks.isHoe(inHand)) && (block.getTypeId() == 2)) {
+                    repair.checkDurability(player, inHand);
+                }
+                break;
+            case RIGHT_CLICK_AIR:
+                if (inHand.getType().equals(Material.BOW)) {
+                    repair.checkDurability(player, inHand);
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -86,18 +80,18 @@ public class PlayerListener implements Listener {
         }
     }
 
-//    /**
-//     * Monitor PlayerCommandPreprocessEvent events.
-//     * 
-//     * @param event The event to watch
-//     */
-//    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-//    public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
-//        Player player = event.getPlayer();
-//        String command = event.getMessage();
-//
-//        if (command.equalsIgnoreCase("/herbalism")) {
-//            player.sendMessage(ChatColor.YELLOW + "TfTAddon message " + ChatColor.GOLD + command + ChatColor.RED + " LOL.");
-//        }
-//    }
+    //    /**
+    //     * Monitor PlayerCommandPreprocessEvent events.
+    //     * 
+    //     * @param event The event to watch
+    //     */
+    //    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    //    public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
+    //        Player player = event.getPlayer();
+    //        String command = event.getMessage();
+    //
+    //        if (command.equalsIgnoreCase("/herbalism")) {
+    //            player.sendMessage(ChatColor.YELLOW + "TfTAddon message " + ChatColor.GOLD + command + ChatColor.RED + " LOL.");
+    //        }
+    //    }
 }

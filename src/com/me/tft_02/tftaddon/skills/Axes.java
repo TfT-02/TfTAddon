@@ -10,12 +10,6 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Axes {
-    private TfTAddon plugin;
-
-    public Axes(final TfTAddon instance) {
-        plugin = instance;
-    }
-
     private final UserProfiles users = new UserProfiles();
 
     private Random random = new Random();
@@ -51,7 +45,8 @@ public class Axes {
             if (TfTAddon.debug_mode) {
                 player.sendMessage(ChatColor.BLUE + "Felt easy " + ChatColor.YELLOW + chance + " > " + diceroll);
             }
-        } else {
+        }
+        else {
             if (TfTAddon.debug_mode) {
                 player.sendMessage(ChatColor.RED + "Failed " + ChatColor.YELLOW + chance + " < " + diceroll);
             }
