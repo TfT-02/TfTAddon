@@ -6,7 +6,7 @@ Key:
   ! Change
   - Removal
 
-Version 1.6.12 | Tested on CB 1.6.2-R0.1 and mcMMO 1.5.07
+Version 1.6.12 | Tested on CB 1.6.2-R0.1 and mcMMO 1.4.07
  + Added hardcore death penalty prevention! Disable stat loss in certain WorldGuard regions
  + Added config reload command; /tftaddon reload
  ! Updated Metrics
