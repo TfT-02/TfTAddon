@@ -37,6 +37,7 @@ public class TfTAddon extends JavaPlugin {
         p = this;
 
         setupMcMMO();
+        setupWorldGuard();
 
         if (getConfig().getBoolean("General.debug_mode_enabled")) {
             this.getLogger().log(Level.WARNING, "Debug mode is enabled, this is only for advanced users!");
