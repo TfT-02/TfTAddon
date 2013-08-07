@@ -20,13 +20,10 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public class TfTAddon extends JavaPlugin {
     public static TfTAddon p;
-
+    public static boolean debug_mode = false;
     public boolean worldGuardEnabled = false;
-
     // Update Check
     public boolean updateAvailable;
-
-    public static boolean debug_mode = false;
 
     public static TfTAddon getInstance() {
         return p;
@@ -45,7 +42,7 @@ public class TfTAddon extends JavaPlugin {
             this.getLogger().log(Level.WARNING, "Debug mode is enabled, this is only for advanced users!");
             debug_mode = true;
         }
-        setupConfiguration();
+        
         registerEvents();
 
         registerCommands();
@@ -67,26 +64,6 @@ public class TfTAddon extends JavaPlugin {
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new BlockListener(), this);
         pm.registerEvents(new McMMOListener(), this);
-    }
-
-    private void setupConfiguration() {
-        final FileConfiguration config = this.getConfig();
-        config.addDefault("General.debug_mode_enabled", false);
-        config.addDefault("General.stats_tracking_enabled", true);
-
-        config.addDefault("Skills.Axes.Dura_level_cap", 100);
-        config.addDefault("Skills.Axes.Dura_percentage_max", 50);
-
-        config.addDefault("Skills.Herbalism.SunnyDay_unlock_level", 50);
-        config.addDefault("Skills.Herbalism.SunnyDay_cost", 30);
-
-        config.addDefault("Skills.Repair.BlacksmithsInstinct_unlock_level", 800);
-        config.addDefault("Skills.Repair.BlacksmithsInstinct_percentage_durability_left", 10);
-
-        config.addDefault("Announce_Level_Up.Power_Level", 100);
-
-        config.options().copyDefaults(true);
-        saveConfig();
     }
 
     /**
@@ -125,8 +102,7 @@ public class TfTAddon extends JavaPlugin {
     private void setupWorldGuard() {
         if (getServer().getPluginManager().isPluginEnabled("WorldGuard")) {
             worldGuardEnabled = true;
-//            debug("WorldGuard found!");
-// Schedule region check
+            debug("WorldGuard found!");
         }
     }
 
