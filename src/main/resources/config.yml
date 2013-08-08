@@ -13,20 +13,20 @@ General:
 
 Skills:
     Axes:
-      Dura_level_cap: 100
-      Dura_percentage_max: 50
+      Durability_MaxBonusLevel: 100
+      Durability_ChanceMax: 50
     Herbalism:
-      SunnyDay_cost: 30
-      SunnyDay_unlock_level: 50
+      SunnyDay_Cost: 30
+      SunnyDay_UnlockLevel: 50
     Repair:
-      BlacksmithsInstinct_unlock_level: 800
-      BlacksmithsInstinct_percentage_durability_left: 10
+      BlacksmithsInstinct_UnlockLevel: 800
+      BlacksmithsInstinct_WarnPercentage: 10.0
     Mining:
-      SuperBreaker_InstaBreak_Obsidian: false
+      SuperBreaker_InstantBreakObsidian: false
 
 Announce_Level_Up:
     Power_Level: 1000
-    Range: 75.0
+    Message_Range: 75.0
 
 WorldGuard:
     Death_Penalty:

@@ -32,33 +32,25 @@ public class EntityListener implements Listener {
         }
 
         if (event.getEntity() instanceof LivingEntity) {
-            combatChecksTfT(event);
-        }
-    }
+            Entity damager = event.getDamager();
+            EntityType damagerType = damager.getType();
 
-    /**
-     * Apply combat modifiers
-     * 
-     * @param event The event to run the combat checks on.
-     */
-    void combatChecksTfT(EntityDamageByEntityEvent event) {
-        Entity damager = event.getDamager();
-        EntityType damagerType = damager.getType();
+            switch (damagerType) {
+                case PLAYER:
+                    Player attacker = (Player) event.getDamager();
+                    ItemStack itemInHand = attacker.getItemInHand();
 
-        switch (damagerType) {
-            case PLAYER:
-                Player attacker = (Player) event.getDamager();
-                ItemStack itemInHand = attacker.getItemInHand();
+                    if (ItemChecks.isAxe(itemInHand)) {
+                        axes.axeDurabilityCheck(attacker, itemInHand);
+                    }
 
-                if (ItemChecks.isAxe(itemInHand)) {
-                    axes.axeDurabilityCheck(attacker, itemInHand);
-                }
-                if (ItemChecks.isRepairable(itemInHand)) {
-                    repair.checkRepair(attacker, itemInHand);
-                }
-                break;
-            default:
-                break;
+                    if (repair.canUseBlacksmithsInstinct(attacker) && ItemChecks.isRepairable(itemInHand)) {
+                        repair.checkDurability(attacker, itemInHand);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

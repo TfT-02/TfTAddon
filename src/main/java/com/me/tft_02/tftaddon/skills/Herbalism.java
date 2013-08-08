@@ -1,9 +1,11 @@
 package com.me.tft_02.tftaddon.skills;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import com.me.tft_02.tftaddon.runnables.SunnyDayCooldownTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -16,11 +18,16 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Herbalism {
+    Random random = new Random();
     private final UserProfiles users = new UserProfiles();
 
-    private boolean sunnydayReady = true;
+    public static boolean sunnydayReady = true;
 
     public void checkSunnyDay(Player player) {
+        if (!player.hasPermission("tftaddon.herbalism")) {
+            return;
+        }
+
         ItemStack item = player.getItemInHand();
         Material summonItem = Material.SEEDS;
         int summonAmount = TfTAddon.getInstance().getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
@@ -38,41 +45,34 @@ public class Herbalism {
                     player.setFireTicks(80);
                 }
                 sunnydayReady = false;
-                String plName = player.getName();
+                String playerName = player.getName();
 
                 player.setItemInHand(new ItemStack(summonItem, item.getAmount() - summonAmount));
-                player.updateInventory();   // Needed until replacement available
+                player.updateInventory();
                 player.getWorld().setStorm(false);
                 player.getWorld().setThundering(false);
                 player.sendMessage(ChatColor.GRAY + getWeatherMessages());
                 player.getWorld().playEffect(player.getLocation(), Effect.GHAST_SHOOT, 1);
                 player.getWorld().playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
-                Location loc = player.getLocation();
-                loc.setY(player.getWorld().getMaxHeight() + 30D);
-                player.getWorld().strikeLightningEffect(loc);
+                Location location = player.getLocation();
+                location.setY(player.getWorld().getMaxHeight() + 30D);
+                player.getWorld().strikeLightningEffect(location);
                 for (Player players : player.getWorld().getPlayers()) {
                     if (players != player) {
-                        players.sendMessage(ChatColor.GOLD + plName + " used Sunny Day!");
+                        players.sendMessage(ChatColor.GOLD + playerName + " used Sunny Day!");
                     }
                 }
-                Bukkit.getScheduler().scheduleSyncDelayedTask(TfTAddon.getInstance(), new Runnable() {
-                    @Override
-                    public void run() {
-                        sunnydayReady = true;
-                    }
-                }, 20 * 2);
+                new SunnyDayCooldownTask().runTaskLater(TfTAddon.p, 20 * 2);
             }
         }
     }
 
-    @SuppressWarnings("unused")
-    String getWeatherMessages() {
-        String[] defaultWeatherMessages = new String[] { "The sunlight is strong!", "The sunlight turned harsh!", "The sunlight got bright!" };
-        List<String> weatherMessages = Arrays.asList(defaultWeatherMessages);
-        Random random = new Random();
-        List<String> messages = weatherMessages;
-        String message;
-        int messageSize = 3;
-        return message = (messages.get(random.nextInt(messageSize)));
+    private String getWeatherMessages() {
+        List<String> weatherMessages = new ArrayList<String>();
+        weatherMessages.add("The sunlight is strong!");
+        weatherMessages.add("The sunlight turned harsh!");
+        weatherMessages.add("The sunlight got bright!");
+
+        return weatherMessages.get(random.nextInt(weatherMessages.size()));
     }
 }

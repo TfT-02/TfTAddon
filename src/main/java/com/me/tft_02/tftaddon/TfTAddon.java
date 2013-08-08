@@ -3,8 +3,8 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import com.me.tft_02.tftaddon.commands.Commands;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,8 +20,9 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public class TfTAddon extends JavaPlugin {
     public static TfTAddon p;
-    public static boolean debug_mode = false;
+
     public boolean worldGuardEnabled = false;
+
     // Update Check
     public boolean updateAvailable;
 
@@ -39,11 +40,6 @@ public class TfTAddon extends JavaPlugin {
         setupMcMMO();
         setupWorldGuard();
 
-        if (getConfig().getBoolean("General.debug_mode_enabled")) {
-            this.getLogger().log(Level.WARNING, "Debug mode is enabled, this is only for advanced users!");
-            debug_mode = true;
-        }
-        
         registerEvents();
 
         registerCommands();

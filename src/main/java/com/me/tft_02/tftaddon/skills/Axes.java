@@ -2,7 +2,7 @@ package com.me.tft_02.tftaddon.skills;
 
 import java.util.Random;
 
-import org.bukkit.ChatColor;
+import com.me.tft_02.tftaddon.config.Config;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -29,8 +29,8 @@ public class Axes {
         }
 
         int level_current = users.getSkillLevel(player, "AXES");
-        int level_cap = TfTAddon.getInstance().getConfig().getInt("Skills.Axes.Dura_level_cap");
-        float chance_max = TfTAddon.getInstance().getConfig().getInt("Skills.Axes.Dura_percentage_max");
+        int level_cap = Config.getInstance().getAxesDuraLevelCap();
+        float chance_max = Config.getInstance().getAxesChanceMax();
 
         float diceroll = random.nextInt(100);
         if (level_current <= 0) {
@@ -41,15 +41,6 @@ public class Axes {
 
         if (chance > diceroll) {
             is.setDurability((short) Math.max(is.getDurability() - 1, 0));
-
-            if (TfTAddon.debug_mode) {
-                player.sendMessage(ChatColor.BLUE + "Felt easy " + ChatColor.YELLOW + chance + " > " + diceroll);
-            }
-        }
-        else {
-            if (TfTAddon.debug_mode) {
-                player.sendMessage(ChatColor.RED + "Failed " + ChatColor.YELLOW + chance + " < " + diceroll);
-            }
         }
     }
 }

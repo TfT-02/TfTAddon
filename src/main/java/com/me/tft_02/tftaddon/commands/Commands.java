@@ -1,5 +1,7 @@
-package com.me.tft_02.tftaddon;
+package com.me.tft_02.tftaddon.commands;
 
+import com.me.tft_02.tftaddon.TfTAddon;
+import com.me.tft_02.tftaddon.config.Config;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
-class Commands implements CommandExecutor {
+public class Commands implements CommandExecutor {
     private TfTAddon plugin;
 
     public Commands(final TfTAddon instance) {
@@ -20,15 +22,9 @@ class Commands implements CommandExecutor {
 
     private String duraChance;
 
-    private float dura_level_cap;
-    private float dura_percentage_max;
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = null;
-
-        dura_level_cap = plugin.getConfig().getInt("Skills.Axes.Dura_level_cap");
-        dura_percentage_max = plugin.getConfig().getInt("Skills.Axes.Dura_percentage_max");
 
         if (sender instanceof Player) {
             player = (Player) sender;
@@ -108,8 +104,8 @@ class Commands implements CommandExecutor {
             }
             else {
                 if (player.hasPermission("tftaddon.herbalism")) {
-                    int summonAmount = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
-                    int sunnydayUnlock = plugin.getConfig().getInt("Skills.Herbalism.SunnyDay_unlock_level");
+                    int summonAmount = Config.getInstance().getHerbalismSunnyDayCost();
+                    int sunnydayUnlock = Config.getInstance().getHerbalismSunnyDayUnlock();
                     float herbaValue = users.getSkillLevel(player, "HERBALISM");
 
                     player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT HERBALISM" + ChatColor.RED + "[]-----");
@@ -170,8 +166,9 @@ class Commands implements CommandExecutor {
     }
 
     private void dataCalculations(float level_current) {
-        dura_level_cap = plugin.getConfig().getInt("Skills.Axes.Dura_level_cap");
-        dura_percentage_max = plugin.getConfig().getInt("Skills.Axes.Dura_percentage_max");
+        int dura_level_cap = Config.getInstance().getAxesDuraLevelCap();
+        int dura_percentage_max = Config.getInstance().getAxesChanceMax();
+
         if (level_current < dura_level_cap) {
             duraChance = String.valueOf((dura_percentage_max / dura_level_cap) * level_current);
         }

@@ -417,37 +417,10 @@ public class ItemChecks {
      * @return true if the item is repairable, false otherwise
      */
     public static boolean isRepairable(final ItemStack is) {
-        switch (is.getType()) {
-            case DIAMOND_PICKAXE:
-            case DIAMOND_SPADE:
-            case DIAMOND_AXE:
-            case DIAMOND_SWORD:
-            case DIAMOND_HOE:
-            case GOLD_PICKAXE:
-            case GOLD_SPADE:
-            case GOLD_AXE:
-            case GOLD_SWORD:
-            case GOLD_HOE:
-            case IRON_PICKAXE:
-            case IRON_SPADE:
-            case IRON_AXE:
-            case IRON_SWORD:
-            case IRON_HOE:
-            case STONE_PICKAXE:
-            case STONE_SPADE:
-            case STONE_AXE:
-            case STONE_SWORD:
-            case STONE_HOE:
-            case WOOD_PICKAXE:
-            case WOOD_SPADE:
-            case WOOD_AXE:
-            case WOOD_SWORD:
-            case WOOD_HOE:
-            case SHEARS:
-            case BOW:
-                return true;
-            default:
-                return false;
+        if (is.getType().getMaxDurability() > 1) {
+            return true;
         }
+
+        return false;
     }
 }
