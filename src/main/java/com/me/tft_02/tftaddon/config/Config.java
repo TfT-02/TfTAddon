@@ -43,7 +43,6 @@ public class Config extends AutoUpdateConfigLoader {
     public boolean getMiningSuperBreakerInstantObsidian() { return config.getBoolean("Skills.Mining.SuperBreaker_InstantBreakObsidian", false); }
 
     /* LEVEL UP ANNOUNCEMENTS */
-
     public int getLevelAnnouncementPowerLevelInterval() { return config.getInt("Announce_Level_Up.Power_Level", 1000); }
     public double getLevelAnnouncementMessageRange() { return config.getDouble("Announce_Level_Up.Message_Range", 75.0); }
 

@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
 import com.gmail.nossr50.events.hardcore.McMMOPlayerDeathPenaltyEvent;
 import com.me.tft_02.tftaddon.TfTAddon;
+import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.util.RegionUtils;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
@@ -19,13 +20,13 @@ public class McMMOListener implements Listener {
 
     /**
      * Monitor McMMOPlayerLevelUpEvent.
-     * 
+     *
      * @param event The event to monitor
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onLevelupEvent(McMMOPlayerLevelUpEvent event) {
-        int levelRequired = TfTAddon.getInstance().getConfig().getInt("Announce_Level_Up.Power_Level");
-        double messageDistance = TfTAddon.getInstance().getConfig().getDouble("Announce_Level_Up.Range");
+        int levelRequired = Config.getInstance().getLevelAnnouncementPowerLevelInterval();
+        double messageDistance = Config.getInstance().getLevelAnnouncementMessageRange();
 
         if (levelRequired <= 0) {
             return;
@@ -50,7 +51,7 @@ public class McMMOListener implements Listener {
 
     /**
      * Check McMMOPlayerDeathPenaltyEvent.
-     * 
+     *
      * @param event The event to check
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
