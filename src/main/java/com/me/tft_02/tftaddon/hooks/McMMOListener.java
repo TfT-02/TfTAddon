@@ -1,14 +1,19 @@
 package com.me.tft_02.tftaddon.hooks;
 
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
 import com.gmail.nossr50.events.hardcore.McMMOPlayerDeathPenaltyEvent;
+import com.gmail.nossr50.events.skills.repair.McMMOPlayerRepairCheckEvent;
 import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.util.RegionUtils;
@@ -62,6 +67,33 @@ public class McMMOListener implements Listener {
 
         if (!RegionUtils.getDeathConsequencesEnabled(event.getPlayer().getLocation())) {
             event.setCancelled(true);
+        }
+    }
+
+    /**
+     * Check McMMOPlayerRepairCheckEvent.
+     *
+     * @param event The event to check
+     */
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onRepairEvent(McMMOPlayerRepairCheckEvent event) {
+        int maximumEnchantLevel = Config.getInstance().getMaximumEnchantLevel();
+        if (maximumEnchantLevel <= 0) {
+            return;
+        }
+
+        ItemStack itemStack = event.getRepairedObject();
+        Map<Enchantment, Integer> enchantments = itemStack.getEnchantments();
+
+        if (enchantments.isEmpty()) {
+            return;
+        }
+
+        for (Integer level : enchantments.values()) {
+            if (level > maximumEnchantLevel) {
+                event.getPlayer().sendMessage(ChatColor.RED + "You cannot Repair this item. Enchantment level is too high!");
+                event.setCancelled(true);
+            }
         }
     }
 }

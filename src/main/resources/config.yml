@@ -28,6 +28,11 @@ Announce_Level_Up:
     Power_Level: 1000
     Message_Range: 75.0
 
+Prevent_Repair_Enchanted_Items:
+    # When an item has an enchantment level higher than the maximum, repairing is cancelled.
+    # Disable with 0 or -1
+    Maximum_Enchantment_Level: 4
+
 WorldGuard:
     Death_Penalty:
         # Use the region list as a whitelist?

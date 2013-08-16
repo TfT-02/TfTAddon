@@ -46,6 +46,9 @@ public class Config extends AutoUpdateConfigLoader {
     public int getLevelAnnouncementPowerLevelInterval() { return config.getInt("Announce_Level_Up.Power_Level", 1000); }
     public double getLevelAnnouncementMessageRange() { return config.getDouble("Announce_Level_Up.Message_Range", 75.0); }
 
+    /* REPAIR BLOCKING */
+    public int getMaximumEnchantLevel() { return config.getInt("Prevent_Repair_Enchanted_Items.Maximum_Enchantment_Level", 4); }
+
     /* WORLDGUARD SETTINGS */
     public boolean getUseAsWhitelist() { return config.getBoolean("WorldGuard.Death_Penalty.Use_As_Whitelist", false); }
     public List<String> getRegionList() { return config.getStringList("WorldGuard.Death_Penalty.Regions"); }
