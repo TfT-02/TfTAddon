@@ -6,7 +6,6 @@ import com.me.tft_02.tftaddon.config.Config;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Axes {
@@ -29,8 +28,8 @@ public class Axes {
         }
 
         int level_current = users.getSkillLevel(player, "AXES");
-        int level_cap = Config.getInstance().getAxesDuraLevelCap();
-        float chance_max = Config.getInstance().getAxesChanceMax();
+        int level_cap = Config.getInstance().getAxesDurabilityLevelCap();
+        float chance_max = Config.getInstance().getAxesDurabilityChanceMax();
 
         float diceroll = random.nextInt(100);
         if (level_current <= 0) {

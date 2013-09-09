@@ -166,8 +166,8 @@ public class Commands implements CommandExecutor {
     }
 
     private void dataCalculations(float level_current) {
-        int dura_level_cap = Config.getInstance().getAxesDuraLevelCap();
-        int dura_percentage_max = Config.getInstance().getAxesChanceMax();
+        int dura_level_cap = Config.getInstance().getAxesDurabilityLevelCap();
+        int dura_percentage_max = Config.getInstance().getAxesDurabilityChanceMax();
 
         if (level_current < dura_level_cap) {
             duraChance = String.valueOf((dura_percentage_max / dura_level_cap) * level_current);

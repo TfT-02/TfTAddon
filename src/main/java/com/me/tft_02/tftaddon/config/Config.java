@@ -31,8 +31,8 @@ public class Config extends AutoUpdateConfigLoader {
     public boolean getConfigOverwriteEnabled() { return config.getBoolean("General.Config_Update_Overwrite", true); }
 
     /* SKILLS */
-    public int getAxesDuraLevelCap() { return config.getInt("Skills.Axes.Durability_MaxBonusLevel", 250); }
-    public int getAxesChanceMax() { return config.getInt("Skills.Axes.Durability_ChanceMax", 50); }
+    public int getAxesDurabilityLevelCap() { return config.getInt("Skills.Axes.Durability_MaxBonusLevel", 250); }
+    public int getAxesDurabilityChanceMax() { return config.getInt("Skills.Axes.Durability_ChanceMax", 50); }
 
     public int getHerbalismSunnyDayCost() { return config.getInt("Skills.Herbalism.SunnyDay_Cost", 30); }
     public int getHerbalismSunnyDayUnlock() { return config.getInt("Skills.Herbalism.SunnyDay_UnlockLevel", 250); }

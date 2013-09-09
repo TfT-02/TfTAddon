@@ -32,11 +32,11 @@ public abstract class ConfigLoader {
 
     protected void loadFile() {
         if (!configFile.exists()) {
-            plugin.debug("Creating Duel " + fileName + " File...");
+            plugin.debug("Creating TfTAddon " + fileName + " File...");
             createFile();
         }
         else {
-            plugin.debug("Loading Duel " + fileName + " File...");
+            plugin.debug("Loading TfTAddon " + fileName + " File...");
         }
 
         config = YamlConfiguration.loadConfiguration(configFile);
