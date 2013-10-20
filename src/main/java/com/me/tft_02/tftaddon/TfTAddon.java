@@ -3,24 +3,26 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import com.me.tft_02.tftaddon.commands.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
 
+import com.me.tft_02.tftaddon.commands.Commands;
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.hooks.McMMOListener;
 import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
 import com.me.tft_02.tftaddon.runnables.UpdateCheckerTask;
+
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import org.mcstats.Metrics;
 
 public class TfTAddon extends JavaPlugin {
     public static TfTAddon p;
 
+    public boolean mcMMOEnabled = false;
     public boolean worldGuardEnabled = false;
 
     // Update Check
@@ -37,7 +39,10 @@ public class TfTAddon extends JavaPlugin {
     public void onEnable() {
         p = this;
 
-        setupMcMMO();
+        if (!setupMcMMO()) {
+            return;
+        }
+
         setupWorldGuard();
 
         registerEvents();
@@ -87,12 +92,15 @@ public class TfTAddon extends JavaPlugin {
         getLogger().info("[Debug] " + message);
     }
 
-    private void setupMcMMO() {
+    private boolean setupMcMMO() {
         PluginManager pm = getServer().getPluginManager();
         if (pm.getPlugin("mcMMO") == null || !pm.isPluginEnabled("mcMMO")) {
             this.getLogger().log(Level.WARNING, " requires mcMMO to run, please download mcMMO");
             pm.disablePlugin(this);
-            return;
+            return false;
+        }
+        else {
+            return true;
         }
     }
 
