@@ -3,7 +3,6 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,13 +20,8 @@ import org.mcstats.Metrics;
 public class TfTAddon extends JavaPlugin {
     public static TfTAddon p;
 
-    public boolean mcMMOEnabled = false;
-    public boolean worldGuardEnabled = false;
-
-
-    public static TfTAddon getInstance() {
-        return p;
-    }
+    private boolean mcMMOEnabled = false;
+    private boolean worldGuardEnabled = false;
 
     /**
      * Run things on enable.
@@ -36,7 +30,11 @@ public class TfTAddon extends JavaPlugin {
     public void onEnable() {
         p = this;
 
-        if (!setupMcMMO()) {
+        setupMcMMO();
+
+        if (!isMcMMOEnabled()) {
+            this.getLogger().log(Level.WARNING, " requires mcMMO to run, please download mcMMO");
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
@@ -51,7 +49,8 @@ public class TfTAddon extends JavaPlugin {
                 Metrics metrics = new Metrics(this);
                 metrics.start();
             }
-            catch (IOException e) {}
+            catch (IOException e) {
+            }
         }
     }
 
@@ -88,15 +87,10 @@ public class TfTAddon extends JavaPlugin {
         getLogger().info("[Debug] " + message);
     }
 
-    private boolean setupMcMMO() {
-        PluginManager pm = getServer().getPluginManager();
-        if (pm.getPlugin("mcMMO") == null || !pm.isPluginEnabled("mcMMO")) {
-            this.getLogger().log(Level.WARNING, " requires mcMMO to run, please download mcMMO");
-            pm.disablePlugin(this);
-            return false;
-        }
-        else {
-            return true;
+    private void setupMcMMO() {
+        if (getServer().getPluginManager().isPluginEnabled("mcMMO")) {
+            mcMMOEnabled = true;
+            debug("mcMMO found!");
         }
     }
 
@@ -117,7 +111,11 @@ public class TfTAddon extends JavaPlugin {
         return (WorldGuardPlugin) plugin;
     }
 
+    public boolean isWorldGuardEnabled() {
+        return worldGuardEnabled;
     }
 
+    public boolean isMcMMOEnabled() {
+        return mcMMOEnabled;
     }
 }

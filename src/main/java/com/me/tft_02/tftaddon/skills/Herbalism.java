@@ -1,12 +1,9 @@
 package com.me.tft_02.tftaddon.skills;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.me.tft_02.tftaddon.runnables.SunnyDayCooldownTask;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -15,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.me.tft_02.tftaddon.TfTAddon;
+import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.runnables.SunnyDayCooldownTask;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Herbalism {
@@ -30,7 +29,7 @@ public class Herbalism {
 
         ItemStack item = player.getItemInHand();
         Material summonItem = Material.SEEDS;
-        int summonAmount = TfTAddon.getInstance().getConfig().getInt("Skills.Herbalism.SunnyDay_cost");
+        int summonAmount = Config.getInstance().getHerbalismSunnyDayCost();
         int skillLvl = (users.getSkillLevel(player, "HERBALISM"));
 
         if (skillLvl >= 50 && item.getType().equals(summonItem)) {
