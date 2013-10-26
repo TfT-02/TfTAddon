@@ -14,7 +14,6 @@ import com.me.tft_02.tftaddon.hooks.McMMOListener;
 import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
-import com.me.tft_02.tftaddon.runnables.UpdateCheckerTask;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.mcstats.Metrics;
@@ -25,8 +24,6 @@ public class TfTAddon extends JavaPlugin {
     public boolean mcMMOEnabled = false;
     public boolean worldGuardEnabled = false;
 
-    // Update Check
-    public boolean updateAvailable;
 
     public static TfTAddon getInstance() {
         return p;
@@ -48,7 +45,6 @@ public class TfTAddon extends JavaPlugin {
         registerEvents();
 
         registerCommands();
-        checkForUpdates();
 
         if (Config.getInstance().getStatsTrackingEnabled()) {
             try {
@@ -121,19 +117,7 @@ public class TfTAddon extends JavaPlugin {
         return (WorldGuardPlugin) plugin;
     }
 
-    private void checkForUpdates() {
-        if (!Config.getInstance().getUpdateCheckEnabled()) {
-            return;
-        }
-
-        getServer().getScheduler().runTaskAsynchronously(this, new UpdateCheckerTask());
     }
 
-    public void updateCheckerCallback(boolean updateAvailable) {
-        this.updateAvailable = updateAvailable;
-        if (updateAvailable) {
-            getLogger().info(ChatColor.GRAY + "You are using an outdated version of " + ChatColor.GOLD + "TfTAddon!");
-            getLogger().info(ChatColor.GRAY + "There is a new version available on BukkitDev.");
-        }
     }
 }
