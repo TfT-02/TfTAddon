@@ -13,12 +13,6 @@ public class UserProfiles {
      * @param skill The Skilltype to check.
      */
     public int getSkillLevel(final Player player, final String skill) {
-        int level = -1;
-        if (skill != null)
-            level = ExperienceAPI.getLevel(player, skill);
-        else
-            level = ExperienceAPI.getPowerLevel(player);
-        return level;
+        return (skill != null) ? ExperienceAPI.getLevel(player, skill) : ExperienceAPI.getPowerLevel(player);
     }
-
 }
