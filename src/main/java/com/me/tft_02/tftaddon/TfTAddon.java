@@ -3,18 +3,21 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import com.me.tft_02.tftaddon.commands.Commands;
+import com.me.tft_02.tftaddon.commands.DuraCommand;
+import com.me.tft_02.tftaddon.commands.TfTAddonCommand;
+import com.me.tft_02.tftaddon.commands.TfTAxesCommand;
+import com.me.tft_02.tftaddon.commands.TfTHelpCommand;
+import com.me.tft_02.tftaddon.commands.TfTHerbalismCommand;
+import com.me.tft_02.tftaddon.commands.TfTRepairCommand;
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.hooks.McMMOListener;
 import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
-
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 public class TfTAddon extends JavaPlugin {
@@ -67,12 +70,12 @@ public class TfTAddon extends JavaPlugin {
      * Register all the command and set Executor.
      */
     private void registerCommands() {
-        getCommand("tftaddon").setExecutor(new Commands(this));
-        getCommand("tfthelp").setExecutor(new Commands(this));
-        getCommand("tftaxes").setExecutor(new Commands(this));
-        getCommand("tftherbalism").setExecutor(new Commands(this));
-        getCommand("tftrepair").setExecutor(new Commands(this));
-        getCommand("dura").setExecutor(new Commands(this));
+        getCommand("tftaddon").setExecutor(new TfTAddonCommand());
+        getCommand("tfthelp").setExecutor(new TfTHelpCommand());
+        getCommand("tftaxes").setExecutor(new TfTAxesCommand());
+        getCommand("tftherbalism").setExecutor(new TfTHerbalismCommand());
+        getCommand("tftrepair").setExecutor(new TfTRepairCommand());
+        getCommand("dura").setExecutor(new DuraCommand());
     }
 
     /**
