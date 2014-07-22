@@ -6,7 +6,7 @@ Key:
   ! Change
   - Removal
 
-Version 1.6.13 | Tested on CB 1.6.4-R1.0 and mcMMO 1.5.01
+Version 1.7.0 | Tested on CB 1.7.10-R0.1 and mcMMO 1.5.01
  = Fixed errors with NPCs
 
 Version 1.6.12 | Tested on CB 1.6.4-R1.0 and mcMMO 1.4.07
