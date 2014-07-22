@@ -1,16 +1,18 @@
 package com.me.tft_02.tftaddon.commands;
 
-import com.me.tft_02.tftaddon.config.Config;
-import com.me.tft_02.tftaddon.util.UserProfiles;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.util.UserProfiles;
+
 public class TfTHerbalismCommand implements CommandExecutor {
 
     private UserProfiles users = new UserProfiles();
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {

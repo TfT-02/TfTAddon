@@ -6,8 +6,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a sword.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a sword, false otherwise
      */
     public static boolean isSword(ItemStack is) {
@@ -26,8 +27,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a hoe.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a hoe, false otherwise
      */
     public static boolean isHoe(ItemStack is) {
@@ -46,8 +48,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a shovel.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a shovel, false otherwise
      */
     public static boolean isShovel(ItemStack is) {
@@ -66,8 +69,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is an axe.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is an axe, false otherwise
      */
     public static boolean isAxe(ItemStack is) {
@@ -86,8 +90,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a pickaxe.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a pickaxe, false otherwise
      */
     public static boolean isPickaxe(ItemStack is) {
@@ -106,8 +111,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a helmet.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a helmet, false otherwise
      */
     public static boolean isHelmet(ItemStack is) {
@@ -125,8 +131,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a chestplate.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a chestplate, false otherwise
      */
     public static boolean isChestplate(ItemStack is) {
@@ -144,8 +151,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a pair of pants.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a pair of pants, false otherwise
      */
     public static boolean isPants(ItemStack is) {
@@ -163,8 +171,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is a pair of boots.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a pair of boots, false otherwise
      */
     public static boolean isBoots(ItemStack is) {
@@ -182,8 +191,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a wearable armor piece.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is armor, false otherwise
      */
     public static boolean isArmor(ItemStack is) {
@@ -192,8 +202,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a leather armor piece.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is leather armor, false otherwise
      */
     private static boolean isLeatherArmor(ItemStack is) {
@@ -211,8 +222,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a gold armor piece.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is gold armor, false otherwise
      */
     private static boolean isGoldArmor(ItemStack is) {
@@ -230,8 +242,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is an iron armor piece.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is iron armor, false otherwise
      */
     private static boolean isIronArmor(ItemStack is) {
@@ -249,8 +262,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a diamond armor piece.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is diamond armor, false otherwise
      */
     private static boolean isDiamondArmor(ItemStack is) {
@@ -268,8 +282,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a tool, false otherwise
      */
     public static boolean isTool(ItemStack is) {
@@ -278,8 +293,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a stone tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a stone tool, false otherwise
      */
     private static boolean isStoneTool(ItemStack is) {
@@ -298,8 +314,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a wooden tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a wooden tool, false otherwise
      */
     private static boolean isWoodTool(ItemStack is) {
@@ -318,8 +335,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a string tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a string tool, false otherwise
      */
     private static boolean isStringTool(ItemStack is) {
@@ -335,8 +353,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a gold tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a stone tool, false otherwise
      */
     private static boolean isGoldTool(ItemStack is) {
@@ -355,8 +374,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is an iron tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is an iron tool, false otherwise
      */
     private static boolean isIronTool(ItemStack is) {
@@ -376,8 +396,9 @@ public class ItemChecks {
 
     /**
      * Checks to see if an item is a diamond tool.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is a diamond tool, false otherwise
      */
     private static boolean isDiamondTool(ItemStack is) {
@@ -396,8 +417,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is flint and steel or a fishing rod.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is flint and steel or a fishing rod, false otherwise
      */
     public boolean isOther(final ItemStack is) {
@@ -412,8 +434,9 @@ public class ItemChecks {
 
     /**
      * Checks if the item is repairable.
-     * 
+     *
      * @param is Item to check
+     *
      * @return true if the item is repairable, false otherwise
      */
     public static boolean isRepairable(final ItemStack is) {

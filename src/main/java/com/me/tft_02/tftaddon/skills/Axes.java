@@ -18,9 +18,9 @@ public class Axes {
 
     /**
      * Changing the durability for an axe.
-     * 
+     *
      * @param player Player to check.
-     * @param is The item in hand.
+     * @param is     The item in hand.
      */
     public void axeDurabilityCheck(Player player, ItemStack is) {
         if (!player.hasPermission("tftaddon.axes")) {

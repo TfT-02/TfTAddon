@@ -21,7 +21,7 @@ public class PlayerListener implements Listener {
 
     /**
      * Monitor PlayerInteract events.
-     * 
+     *
      * @param event The event to monitor
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -65,7 +65,7 @@ public class PlayerListener implements Listener {
 
     /**
      * Monitor PlayerItemHeldEvent events.
-     * 
+     *
      * @param event The event to monitor
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

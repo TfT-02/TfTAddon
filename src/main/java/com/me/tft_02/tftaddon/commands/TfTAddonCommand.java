@@ -1,11 +1,12 @@
 package com.me.tft_02.tftaddon.commands;
 
-import com.me.tft_02.tftaddon.TfTAddon;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import com.me.tft_02.tftaddon.TfTAddon;
 
 public class TfTAddonCommand implements CommandExecutor {
 

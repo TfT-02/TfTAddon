@@ -1,6 +1,5 @@
 package com.me.tft_02.tftaddon.listener;
 
-import com.me.tft_02.tftaddon.config.Config;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,6 +10,7 @@ import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.gmail.nossr50.api.AbilityAPI;
+import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.skills.Repair;
 import com.me.tft_02.tftaddon.util.ItemChecks;
 

@@ -3,6 +3,10 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import com.me.tft_02.tftaddon.commands.DuraCommand;
 import com.me.tft_02.tftaddon.commands.TfTAddonCommand;
 import com.me.tft_02.tftaddon.commands.TfTAxesCommand;
@@ -14,10 +18,8 @@ import com.me.tft_02.tftaddon.hooks.McMMOListener;
 import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
+
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 public class TfTAddon extends JavaPlugin {
