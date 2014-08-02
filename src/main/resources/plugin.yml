@@ -54,9 +54,9 @@ permissions:
     tftaddon.tfthelp:
         description: Get a list of all the commands.
     tftaddon.axes:
-        description: Get information about the axes.
+        description: Grants access to the axes additions and the tftaxes command.
     tftaddon.herbalism:
-        description: Get information about the herbalism addon.
+        description: Grants access to the herbalism additions and the tftherbalism command.
     tftaddon.repair:
         description: Grants access to the repair additions and the tftrepair command.
     tftaddon.dura:
