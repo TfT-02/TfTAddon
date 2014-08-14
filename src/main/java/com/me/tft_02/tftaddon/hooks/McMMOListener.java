@@ -11,13 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
-import com.gmail.nossr50.events.hardcore.McMMOPlayerDeathPenaltyEvent;
 import com.gmail.nossr50.events.skills.repair.McMMOPlayerRepairCheckEvent;
 
-import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.locale.LocaleLoader;
-import com.me.tft_02.tftaddon.util.RegionUtils;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class McMMOListener implements Listener {
@@ -52,22 +49,6 @@ public class McMMOListener implements Listener {
                     players.sendMessage(LocaleLoader.getString("Feature.LevelAnnouncement", player.getName(), power_level));
                 }
             }
-        }
-    }
-
-    /**
-     * Check McMMOPlayerDeathPenaltyEvent.
-     *
-     * @param event The event to check
-     */
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onDeathPenaltyEvent(McMMOPlayerDeathPenaltyEvent event) {
-        if (!TfTAddon.p.isWorldGuardEnabled()) {
-            return;
-        }
-
-        if (!RegionUtils.getDeathConsequencesEnabled(event.getPlayer().getLocation())) {
-            event.setCancelled(true);
         }
     }
 

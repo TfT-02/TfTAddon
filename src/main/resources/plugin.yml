@@ -3,7 +3,7 @@ author: TfT_02
 main: com.me.tft_02.tftaddon.TfTAddon
 description: mcMMO Addon which adds extra features.
 version: ${project.version}-b${BUILD_NUMBER}
-softdepend: [mcMMO, WorldGuard]
+softdepend: [mcMMO]
 commands:
    tftaddon:
       description: Get information about the plugin.

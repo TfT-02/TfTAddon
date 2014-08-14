@@ -34,12 +34,3 @@ Prevent_Repair_Enchanted_Items:
     # When an item has an enchantment level higher than the maximum, repairing is cancelled.
     # Disable with 0 or -1
     Maximum_Enchantment_Level: 4
-
-WorldGuard:
-    Death_Penalty:
-        # Use the region list as a whitelist?
-        Use_As_Whitelist: false
-
-        # Players will (not) suffer hardcore death penalties in the regions listed below.
-        Regions:
-        - no_penalty_here

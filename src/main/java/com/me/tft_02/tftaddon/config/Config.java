@@ -49,9 +49,5 @@ public class Config extends AutoUpdateConfigLoader {
     /* REPAIR BLOCKING */
     public int getMaximumEnchantLevel() { return config.getInt("Prevent_Repair_Enchanted_Items.Maximum_Enchantment_Level", 4); }
 
-    /* WORLDGUARD SETTINGS */
-    public boolean getUseAsWhitelist() { return config.getBoolean("WorldGuard.Death_Penalty.Use_As_Whitelist", false); }
-    public List<String> getRegionList() { return config.getStringList("WorldGuard.Death_Penalty.Regions"); }
-
     /* @formatter:on */
 }

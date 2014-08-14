@@ -10,6 +10,7 @@ Version 1.7.0 | Tested on CB 1.7.10-R0.1 and mcMMO 1.5.01
  + Added localization!
  ! Major internal code cleanup
  = Fixed errors with NPCs
+ - Removed hardcore death penalty prevention, use mcMMO-WorldGuard if you want to keep using this feature!
 
 Version 1.6.12 | Tested on CB 1.6.4-R1.0 and mcMMO 1.4.07
  + Added hardcore death penalty prevention! Disable stat loss in certain WorldGuard regions

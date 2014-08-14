@@ -3,7 +3,6 @@ package com.me.tft_02.tftaddon;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,14 +18,12 @@ import com.me.tft_02.tftaddon.listener.BlockListener;
 import com.me.tft_02.tftaddon.listener.EntityListener;
 import com.me.tft_02.tftaddon.listener.PlayerListener;
 
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.mcstats.Metrics;
 
 public class TfTAddon extends JavaPlugin {
     public static TfTAddon p;
 
     private boolean mcMMOEnabled = false;
-    private boolean worldGuardEnabled = false;
 
     /**
      * Run things on enable.
@@ -42,8 +39,6 @@ public class TfTAddon extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-
-        setupWorldGuard();
 
         registerEvents();
 
@@ -97,27 +92,6 @@ public class TfTAddon extends JavaPlugin {
             mcMMOEnabled = true;
             debug("mcMMO found!");
         }
-    }
-
-    private void setupWorldGuard() {
-        if (getServer().getPluginManager().isPluginEnabled("WorldGuard")) {
-            worldGuardEnabled = true;
-            debug("WorldGuard found!");
-        }
-    }
-
-    public WorldGuardPlugin getWorldGuard() {
-        Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
-
-        if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
-            return null;
-        }
-
-        return (WorldGuardPlugin) plugin;
-    }
-
-    public boolean isWorldGuardEnabled() {
-        return worldGuardEnabled;
     }
 
     public boolean isMcMMOEnabled() {
