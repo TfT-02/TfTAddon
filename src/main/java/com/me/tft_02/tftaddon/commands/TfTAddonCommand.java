@@ -1,42 +1,34 @@
 package com.me.tft_02.tftaddon.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.me.tft_02.tftaddon.TfTAddon;
+import com.me.tft_02.tftaddon.locale.LocaleLoader;
 
 public class TfTAddonCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player player = null;
-
-        if (sender instanceof Player) {
-            player = (Player) sender;
+        if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+            return reloadConfiguration(sender);
         }
 
-        if (player == null) {
-            sender.sendMessage("TfTAddon adds extra features for mcMMO.");
-            sender.sendMessage("Type /tfthelp for a list of all the commands.");
+        if (sender.hasPermission("tftaddon.tftaddon")) {
+            sender.sendMessage(LocaleLoader.getString("General.Plugin.Header", "TfT Addon"));
+            sender.sendMessage(LocaleLoader.getString("General.Plugin.Author", "TfT_02"));
+            sender.sendMessage(LocaleLoader.getString("General.Running_Version", TfTAddon.p.getDescription().getVersion()));
+            sender.sendMessage(LocaleLoader.getString("Commands.TfTAddon.About.0"));
+            sender.sendMessage(LocaleLoader.getString("Commands.TfTAddon.About.1"));
+            sender.sendMessage(LocaleLoader.getString("Commands.TfTAddon.About.2"));
+            sender.sendMessage(LocaleLoader.getString("Commands.TfTAddon.About.3"));
+            sender.sendMessage(LocaleLoader.getString("Commands.TfTAddon.About.4"));
+            sender.sendMessage(LocaleLoader.getString("General.Use_Help"));
         }
-        else {
-            if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-                return reloadConfiguration(sender);
-            }
-            if (player.hasPermission("tftaddon.tftaddon")) {
-                player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Addon" + ChatColor.RED + "[]-----");
-                player.sendMessage(ChatColor.GOLD + "TfTAddon has these extra features for mcMMO:");
-                player.sendMessage(ChatColor.GREEN + "Reduce durability for Axes.");
-                player.sendMessage(ChatColor.GREEN + "Change the weather with Herbalism.");
-                player.sendMessage(ChatColor.GREEN + "Receive Repair warning, of the item in use.");
-                player.sendMessage(ChatColor.GOLD + "type /tfthelp for a list of all the commands.");
-            }
-        }
+
         return true;
-
     }
 
     private boolean reloadConfiguration(CommandSender sender) {
@@ -45,7 +37,7 @@ public class TfTAddonCommand implements CommandExecutor {
         }
 
         TfTAddon.p.reloadConfig();
-        sender.sendMessage(ChatColor.GREEN + "Configuration reloaded.");
+        sender.sendMessage(LocaleLoader.getString("Commands.Reload.Success"));
         return false;
     }
 }

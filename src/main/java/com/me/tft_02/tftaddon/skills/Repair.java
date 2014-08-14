@@ -3,11 +3,11 @@ package com.me.tft_02.tftaddon.skills;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.locale.LocaleLoader;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Repair {
@@ -37,7 +37,7 @@ public class Repair {
 
         if ((durability + warningValue) > maxDurability) {
             warnedPlayers.add(player.getName());
-            player.sendMessage(ChatColor.RED + "Durability low! - repair needed");
+            player.sendMessage(LocaleLoader.getString("Repair.BlacksmithsInstinct.Warning"));
         }
     }
 

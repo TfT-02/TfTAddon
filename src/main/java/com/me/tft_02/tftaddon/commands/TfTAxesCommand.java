@@ -1,22 +1,21 @@
 package com.me.tft_02.tftaddon.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.locale.LocaleLoader;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class TfTAxesCommand implements CommandExecutor {
     private UserProfiles users = new UserProfiles();
-    private String duraChance;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("This command does not support console usage.");
+            sender.sendMessage(LocaleLoader.getString("Commands.NoConsole"));
             return true;
         }
 
@@ -26,25 +25,23 @@ public class TfTAxesCommand implements CommandExecutor {
             return false;
         }
 
-        float level_current = users.getSkillLevel(player, "AXES");
-        dataCalculations(level_current);
-        player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT AXES" + ChatColor.RED + "[]-----");
-        player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
-        player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "YOUR STATS" + ChatColor.RED + "[]-----");
-        player.sendMessage(ChatColor.RED + "Chance to reduce durability: " + ChatColor.YELLOW + duraChance + "%");
-
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.0", "AXES"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.1"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.Stats"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Axes.0", dataCalculations(player)));
         return true;
     }
 
-    private void dataCalculations(float level_current) {
+    private String dataCalculations(Player player) {
+        float level_current = users.getSkillLevel(player, "AXES");
         int dura_level_cap = Config.getInstance().getAxesDurabilityLevelCap();
         int dura_percentage_max = Config.getInstance().getAxesDurabilityChanceMax();
 
         if (level_current < dura_level_cap) {
-            duraChance = String.valueOf((dura_percentage_max / dura_level_cap) * level_current);
+            return String.valueOf((dura_percentage_max / dura_level_cap) * level_current) + "%";
         }
-        else if (level_current >= dura_level_cap) {
-            duraChance = String.valueOf(dura_percentage_max);
+        else {
+            return String.valueOf(dura_percentage_max) + "%";
         }
     }
 }

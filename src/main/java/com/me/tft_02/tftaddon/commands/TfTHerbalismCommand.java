@@ -1,12 +1,12 @@
 package com.me.tft_02.tftaddon.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.locale.LocaleLoader;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class TfTHerbalismCommand implements CommandExecutor {
@@ -16,7 +16,7 @@ public class TfTHerbalismCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("This command does not support console usage.");
+            sender.sendMessage(LocaleLoader.getString("Commands.NoConsole"));
             return true;
         }
 
@@ -30,15 +30,16 @@ public class TfTHerbalismCommand implements CommandExecutor {
         int sunnydayUnlock = Config.getInstance().getHerbalismSunnyDayUnlock();
         float herbaValue = users.getSkillLevel(player, "HERBALISM");
 
-        player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT HERBALISM" + ChatColor.RED + "[]-----");
-        player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
-        player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.0", "HERBALISM"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.1"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.Effects"));
+
         if (herbaValue < sunnydayUnlock) {
-            player.sendMessage(ChatColor.GRAY + "LOCKED UNTIL " + sunnydayUnlock + "+ SKILL (SUNNY DAY)");
+            player.sendMessage(LocaleLoader.getString("Commands.Skills.Herbalism.0", sunnydayUnlock));
         }
         else {
-            player.sendMessage(ChatColor.DARK_AQUA + "Sunny Day: " + ChatColor.GREEN + "Makes the sun shine bright.");
-            player.sendMessage(ChatColor.GRAY + "Crouch and left-click with " + summonAmount + " seeds in your hand.");
+            player.sendMessage(LocaleLoader.getString("Commands.Skills.Herbalism.1"));
+            player.sendMessage(LocaleLoader.getString("Commands.Skills.Herbalism.2", summonAmount));
         }
 
         return true;

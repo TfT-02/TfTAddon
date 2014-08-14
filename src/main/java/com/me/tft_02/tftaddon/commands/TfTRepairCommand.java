@@ -1,12 +1,12 @@
 package com.me.tft_02.tftaddon.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.locale.LocaleLoader;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class TfTRepairCommand implements CommandExecutor {
@@ -15,7 +15,7 @@ public class TfTRepairCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("This command does not support console usage.");
+            sender.sendMessage(LocaleLoader.getString("Commands.NoConsole"));
             return true;
         }
 
@@ -25,17 +25,18 @@ public class TfTRepairCommand implements CommandExecutor {
             return false;
         }
 
-        int blacksmithsinstinctUnlock = Config.getInstance().getRepairBIUnlock();
+        int blacksmithsInstinctUnlock = Config.getInstance().getRepairBIUnlock();
         float repairValue = users.getSkillLevel(player, "REPAIR");
 
-        player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "TfT Repair" + ChatColor.RED + "[]-----");
-        player.sendMessage(ChatColor.GRAY + "Extra abilities from TfTAddon");
-        player.sendMessage(ChatColor.RED + "-----[]" + ChatColor.GREEN + "EFFECTS" + ChatColor.RED + "[]-----");
-        if (repairValue < blacksmithsinstinctUnlock) {
-            player.sendMessage(ChatColor.GRAY + "LOCKED UNTIL " + blacksmithsinstinctUnlock + "+ SKILL (BLACKSMITH'S INSTINCT)");
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.0", "REPAIR"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.1"));
+        player.sendMessage(LocaleLoader.getString("Commands.Skills.Header.Effects"));
+
+        if (repairValue < blacksmithsInstinctUnlock) {
+            player.sendMessage(LocaleLoader.getString("Commands.Skills.Repair.0", blacksmithsInstinctUnlock));
         }
         else {
-            player.sendMessage(ChatColor.DARK_AQUA + "Blacksmith's instinct: " + ChatColor.GREEN + "Sense when tools need a repair.");
+            player.sendMessage(LocaleLoader.getString("Commands.Skills.Repair.1"));
         }
 
         return true;

@@ -1,4 +1,6 @@
 General:
+    Locale: en_US
+
     # Allow TfTAddon to report on basic anonymous usage
     Stats_Tracking: true
 

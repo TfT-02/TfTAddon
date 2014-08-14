@@ -3,7 +3,6 @@ package com.me.tft_02.tftaddon.hooks;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,8 +13,10 @@ import org.bukkit.inventory.ItemStack;
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
 import com.gmail.nossr50.events.hardcore.McMMOPlayerDeathPenaltyEvent;
 import com.gmail.nossr50.events.skills.repair.McMMOPlayerRepairCheckEvent;
+
 import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.locale.LocaleLoader;
 import com.me.tft_02.tftaddon.util.RegionUtils;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
@@ -41,15 +42,15 @@ public class McMMOListener implements Listener {
         int power_level = users.getSkillLevel(player, null);
 
         if ((power_level % levelRequired) == 0) {
-            if (messageDistance > 0) {
-                for (Player players : player.getWorld().getPlayers()) {
-                    if (players != player && players.getLocation().distance(player.getLocation()) < messageDistance) {
-                        players.sendMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
-                    }
-                }
+            if (messageDistance <= 0) {
+                Bukkit.broadcastMessage(LocaleLoader.getString("Feature.LevelAnnouncement", player.getName(), power_level));
+                return;
             }
-            else {
-                Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + ChatColor.GRAY + " has just reached power level " + ChatColor.GREEN + power_level);
+
+            for (Player players : player.getWorld().getPlayers()) {
+                if (players != player && players.getLocation().distance(player.getLocation()) < messageDistance) {
+                    players.sendMessage(LocaleLoader.getString("Feature.LevelAnnouncement", player.getName(), power_level));
+                }
             }
         }
     }
@@ -91,7 +92,7 @@ public class McMMOListener implements Listener {
 
         for (Integer level : enchantments.values()) {
             if (level > maximumEnchantLevel) {
-                event.getPlayer().sendMessage(ChatColor.RED + "You cannot Repair this item. Enchantment level is too high!");
+                event.getPlayer().sendMessage(LocaleLoader.getString("Feature.RepairEnchantment"));
                 event.setCancelled(true);
             }
         }
