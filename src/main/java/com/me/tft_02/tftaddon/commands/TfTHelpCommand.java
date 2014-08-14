@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.me.tft_02.tftaddon.locale.LocaleLoader;
+import com.me.tft_02.tftaddon.util.Permissions;
 
 public class TfTHelpCommand implements CommandExecutor {
 
@@ -41,10 +42,10 @@ public class TfTHelpCommand implements CommandExecutor {
             case 1:
                 sendHelpPage(sender, LocaleLoader.getString("Help.Page_0.Line_0"));
 
-                if (sender.hasPermission("tftaddon.commands.reload")) {
+                if (Permissions.reload(sender)) {
                     sendHelpPage(sender, LocaleLoader.getString("Help.Page_0.Line_1"));
                 }
-                else if (sender.hasPermission("tftaddon.tftaddon")) {
+                else if (Permissions.tftaddon(sender)) {
                     sendHelpPage(sender, LocaleLoader.getString("Help.Page_0.Line_2"));
                 }
                 sendHelpPage(sender, LocaleLoader.getString("Help.Page_0.Line_3"));
@@ -54,19 +55,19 @@ public class TfTHelpCommand implements CommandExecutor {
             case 2:
                 sendHelpPage(sender, LocaleLoader.getString("Help.Page_1.Line_0"));
 
-                if (sender.hasPermission("tftaddon.axes")) {
+                if (Permissions.axes(sender)) {
                     sendHelpPage(sender, LocaleLoader.getString("Help.Page_1.Line_1"));
                 }
 
-                if (sender.hasPermission("tftaddon.herbalism")) {
+                if (Permissions.herbalism(sender)) {
                     sendHelpPage(sender, LocaleLoader.getString("Help.Page_1.Line_2"));
                 }
 
-                if (sender.hasPermission("tftaddon.repair")) {
+                if (Permissions.repair(sender)) {
                     sendHelpPage(sender, LocaleLoader.getString("Help.Page_1.Line_3"));
                 }
 
-                if (sender.hasPermission("tftaddon.dura")) {
+                if (Permissions.dura(sender)) {
                     sendHelpPage(sender, LocaleLoader.getString("Help.Page_1.Line_4"));
                 }
                 return;

@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.locale.LocaleLoader;
+import com.me.tft_02.tftaddon.util.Permissions;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class TfTRepairCommand implements CommandExecutor {
@@ -21,7 +22,7 @@ public class TfTRepairCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (!player.hasPermission("tftaddon.repair")) {
+        if (!Permissions.repair(player)) {
             return false;
         }
 

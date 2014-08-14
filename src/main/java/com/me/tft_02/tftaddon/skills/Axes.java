@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.me.tft_02.tftaddon.config.Config;
+import com.me.tft_02.tftaddon.util.Permissions;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Axes {
@@ -23,7 +24,7 @@ public class Axes {
      * @param is     The item in hand.
      */
     public void axeDurabilityCheck(Player player, ItemStack is) {
-        if (!player.hasPermission("tftaddon.axes")) {
+        if (!Permissions.axes(player)) {
             return;
         }
 

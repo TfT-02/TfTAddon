@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.me.tft_02.tftaddon.locale.LocaleLoader;
+import com.me.tft_02.tftaddon.util.Permissions;
 
 public class DuraCommand implements CommandExecutor {
 
@@ -18,7 +19,7 @@ public class DuraCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (!player.hasPermission("tftaddon.dura")) {
+        if (!Permissions.dura(player)) {
             return false;
         }
 

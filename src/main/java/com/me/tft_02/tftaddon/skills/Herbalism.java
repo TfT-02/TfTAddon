@@ -15,6 +15,7 @@ import com.me.tft_02.tftaddon.TfTAddon;
 import com.me.tft_02.tftaddon.config.Config;
 import com.me.tft_02.tftaddon.locale.LocaleLoader;
 import com.me.tft_02.tftaddon.runnables.SunnyDayCooldownTask;
+import com.me.tft_02.tftaddon.util.Permissions;
 import com.me.tft_02.tftaddon.util.UserProfiles;
 
 public class Herbalism {
@@ -24,7 +25,7 @@ public class Herbalism {
     public static boolean sunnydayReady = true;
 
     public void checkSunnyDay(Player player) {
-        if (!player.hasPermission("tftaddon.herbalism")) {
+        if (!Permissions.herbalism(player)) {
             return;
         }
 
