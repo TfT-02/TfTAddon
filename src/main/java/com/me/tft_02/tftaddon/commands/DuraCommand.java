@@ -23,7 +23,7 @@ public class DuraCommand implements CommandExecutor {
             return false;
         }
 
-        player.sendMessage(LocaleLoader.getString("General.Plugin.Header"));
+        player.sendMessage(LocaleLoader.getString("General.Plugin.Header", "TfT Addon"));
         player.sendMessage(LocaleLoader.getString("Commands.Dura.0", player.getItemInHand().getDurability()));
         return true;
     }

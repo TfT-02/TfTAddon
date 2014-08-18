@@ -73,9 +73,9 @@ public class Herbalism {
 
     private String getWeatherMessages() {
         List<String> weatherMessages = new ArrayList<String>();
-        weatherMessages.add("Herbalism.SunnyDay.Success.0");
-        weatherMessages.add("Herbalism.SunnyDay.Success.1");
-        weatherMessages.add("Herbalism.SunnyDay.Success.2");
+        weatherMessages.add(LocaleLoader.getString("Herbalism.SunnyDay.Success.0"));
+        weatherMessages.add(LocaleLoader.getString("Herbalism.SunnyDay.Success.1"));
+        weatherMessages.add(LocaleLoader.getString("Herbalism.SunnyDay.Success.2"));
 
         return weatherMessages.get(random.nextInt(weatherMessages.size()));
     }
