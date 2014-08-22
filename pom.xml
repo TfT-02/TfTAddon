@@ -94,7 +94,7 @@
         <dependency>
             <groupId>com.gmail.nossr50.mcMMO</groupId>
             <artifactId>mcMMO</artifactId>
-            <version>LATEST</version>
+            <version>1.5.01-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

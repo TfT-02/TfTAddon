@@ -3,6 +3,7 @@ package com.me.tft_02.tftaddon.util;
 import org.bukkit.entity.Player;
 
 import com.gmail.nossr50.api.ExperienceAPI;
+import com.gmail.nossr50.api.exceptions.McMMOPlayerNotFoundException;
 
 public class UserProfiles {
 
@@ -13,6 +14,11 @@ public class UserProfiles {
      * @param skill  The Skilltype to check.
      */
     public int getSkillLevel(final Player player, final String skill) {
-        return (skill != null) ? ExperienceAPI.getLevel(player, skill) : ExperienceAPI.getPowerLevel(player);
+        try {
+            return (skill != null) ? ExperienceAPI.getLevel(player, skill) : ExperienceAPI.getPowerLevel(player);
+        }
+        catch (McMMOPlayerNotFoundException ignored) {
+            return 0;
+        }
     }
 }
